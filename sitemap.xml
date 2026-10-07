@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://residia.pl/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://residia.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://residia.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://residia.pl/"/>
+  </url>
+  <url>
+    <loc>https://residia.pl/en/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://residia.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://residia.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://residia.pl/"/>
+  </url>
+  <url>
+    <loc>https://residia.pl/analyzer.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/karta-pobytu-praca.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/karta-pobytu-jdg.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/karta-cukr.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/polaczenie-z-rodzina.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/malzonek-obywatela-polski.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/pobyt-staly-karta-polaka.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/pobyt-staly-polskie-pochodzenie.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/pobyt-staly-malzenstwo.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/rezydent-ue.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/po-zlozeniu-wniosku.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/dokumenty/oplaty.html</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://residia.pl/faq.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часто задаваемые вопросы | RESIDIA Consulting</title>
+    <meta name="description" content="Ответы на частые вопросы о карте побыту в Польше: договор, Profil Zaufany, сроки, отпечатки пальцев, wezwanie, отказ. Residia - помощь с легализацией.">
+    <link rel="canonical" href="https://residia.pl/faq.html">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="img/residia66.svg">
+    <style>
+        /* ── СТИЛИ ДЛЯ БЛОКА FAQ ── */
+        .faq-page-header {
+            padding: 6rem 0 3rem;
+            text-align: center;
+        }
+        .faq-page-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        .faq-page-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-section {
+            padding-bottom: 6rem;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            cursor: pointer;
+            text-align: left;
+            color: var(--text-color);
+            font-family: var(--font-main);
+        }
+        .faq-question:hover .faq-text {
+            color: var(--accent-color);
+        }
+
+        .faq-question-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .faq-number {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .faq-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+            line-height: 1.4;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--accent-color);
+        }
+
+        /* Умная анимация аккордеона через Grid */
+        .faq-answer-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
+        }
+        .faq-item.active .faq-answer-wrapper {
+            grid-template-rows: 1fr;
+        }
+        .faq-answer {
+            overflow: hidden;
+        }
+        .faq-answer-inner {
+            padding-bottom: 1.5rem;
+            padding-left: 3rem; /* Выравнивание по тексту, а не по цифре */
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .faq-container { padding: 0.5rem 1rem; }
+            .faq-question-left { gap: 1rem; }
+            .faq-answer-inner { padding-left: 0; }
+        }
+    </style>
+    <script src="js/consent-lite.js" defer></script>
+</head>
+<body class="faq-body">
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="index.html" class="logo-link"><img src="img/residia.svg" alt="RESIDIA Logo" class="brand-logo"></a>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html#home">Главная</a>
+                <a href="index.html#services">Услуги</a>  
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="index.html#contact" class="btn-primary">Связаться</a>
+                <a href="analyzer.html" class="nav-analyzer">Анализатор</a>
+            </nav>
+
+            <div class="header-right">
+                <button id="theme-toggle" class="theme-switch" aria-label="Переключить тему">
+                <span class="theme-switch-slider"></span>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                </button>
+                <button class="burger-btn" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="faq-page-header">
+            <div class="container">
+                <div class="hero-badge" style="margin-bottom: 1rem;">База знаний</div>
+                <h1 class="faq-page-title">Часто задаваемые вопросы<span class="text-accent">.</span></h1>
+                <p class="faq-page-subtitle">Собрали для вас ответы на самые популярные вопросы о легализации, сроках и процессе работы с нами.</p>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq-container">
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">01</span>
+                                <span class="faq-text">Вы работаете по договору?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Да. Мы работаем официально и заранее согласовываем объем услуг, стоимость и этапы работы. Вы понимаете, за что платите, какие документы готовятся и что входит в сопровождение.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">02</span>
+                                <span class="faq-text">Если у меня нет Profil Zaufany — что делать?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Это не проблема. Мы объясним, как восстановить или создать Profil Zaufany через банк или urząd. Если вы не можете разобраться самостоятельно — поможем пройти весь процесс пошагово.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">03</span>
+                                <span class="faq-text">Сколько ждать карту побыта?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Срок зависит от воеводства и ситуации по делу. В среднем ожидание занимает от нескольких месяцев до года и больше. После подачи вы находитесь в стране легально, если заявление принято.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">04</span>
+                                <span class="faq-text">Можно ли податься без адреса прописки?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    В некоторых случаях — да. Всё зависит от типа дела и воеводства. Мы заранее проверяем вашу ситуацию и подбираем безопасный вариант подачи.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">05</span>
+                                <span class="faq-text">Что делать, если работодатель не дает документы?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Это частая ситуация. Мы подскажем, какие документы обязательны, как правильно запросить их у работодателя и что можно сделать, если работодатель затягивает процесс.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">06</span>
+                                <span class="faq-text">Могу ли я покидать Польшу во время ожидания карты побыта?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Это зависит от вашего гражданства, визы и текущего статуса пребывания. В некоторых случаях выезд возможен, но могут возникнуть проблемы с обратным въездом в Польшу или Шенген. Перед поездкой лучше заранее уточнить свою ситуацию.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">07</span>
+                                <span class="faq-text">Когда позовут на отпечатки пальцев?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Срок зависит от urzędu и загруженности инспектора. Иногда вызов приходит через несколько недель, иногда — через несколько месяцев после подачи документов.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">08</span>
+                                <span class="faq-text">А что если я получу отказ?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                   Отказ — это не всегда конец дела. Часто проблему можно решить через апелляцию, исправление документов или повторную подачу. Главное — не игнорировать письма из urzędu и действовать вовремя.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">09</span>
+                                <span class="faq-text">Вы только готовите документы или ведете дело полностью?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Мы можем как подготовить пакет документов, так и полностью сопровождать ваше дело: заполнение заявлений, связь с urzędem, ответы на wezwania и контроль статуса дела.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <div class="faq-question-left">
+                                <span class="faq-number">10</span>
+                                <span class="faq-text">Что делать, если пришло wezwanie из urzędu?</span>
+                            </div>
+                            <div class="faq-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer-wrapper">
+                            <div class="faq-answer">
+                                <div class="faq-answer-inner">
+                                    Не паниковать. Wezwanie — это обычная часть процесса. Чаще всего urząd просит донести документы или уточнить информацию. Важно ответить правильно и в срок, чтобы не получить отказ по делу.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-brand">
+                    <img src="img/residia66.svg" alt="RESIDIA Logo" class="footer-logo">
+                    <p class="footer-mission">Премиальное сопровождение бизнеса <br> и легализация в Польше.</p>
+                </div>
+
+                <div class="footer-socials">
+                    <h4>Связаться</h4>
+                    <ul>
+                        <li><a href="https://t.me/residia_consulting" target="_blank" rel="noopener">Telegram</a></li>
+                        <li><a href="https://www.instagram.com/residia.consulting/" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="tel:+48571528293">+48 571 528 293</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-legal">
+                    <h4>Где мы</h4>
+                    <p>Warszawa, Polska</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 RESIDIA Consulting. Все права защищены.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const button = item.querySelector('.faq-question');
+                
+                button.addEventListener('click', () => {
+                    // Закрываем все остальные открытые вопросы (по желанию, можно убрать, если хочешь, чтобы они открывались независимо)
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Переключаем класс текущего вопроса
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+    <div class="fab-wrapper" id="fab-wrapper">
+    <div class="fab-menu">
+        <a href="tel:+48571528293" class="fab-action" style="--delay: 0.25s;" aria-label="Viber"><svg ...></svg></a>
+        <a href="https://t.me/residia_consulting" class="fab-action" style="--delay: 0.15s;" aria-label="Telegram"><svg ...></svg></a>
+        <a href="https://www.instagram.com/residia.consulting/" class="fab-action" style="--delay: 0.05s;" aria-label="Instagram"><svg ...></svg></a>
+    </div>
+    <button class="fab-toggle" id="fab-toggle" aria-label="Контакты">
+        <span class="fab-icon-question">?</span>
+        <span class="fab-icon-close">✕</span>
+    </button>
+</div>
+
+<button id="open-modal-fab" class="fab-chat-btn" aria-label="Открыть форму заявки">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</button>
+
+<div id="callback-modal" class="modal-overlay hidden">
+    </div>
+</body>
+</html>
