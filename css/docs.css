@@ -1,0 +1,256 @@
+/* ==========================================================================
+   Residia - раздел «Документы» (dokumenty/): чек-листы, пошлины, шаблоны
+   Поверх css/site.css. Логика - js/docs.js. Страницы собирает _tools/build_docs.py.
+   ========================================================================== */
+
+/* ---------- Шапка страницы ---------- */
+.mt-hero{position:relative;overflow:hidden;overflow:clip;isolation:isolate;padding:calc(var(--header-h) + 28px) 0 36px}
+.mt-hero__glow{position:absolute;z-index:-1;width:640px;height:640px;right:-260px;top:-300px;border-radius:50%;background:radial-gradient(closest-side,rgba(47,168,118,.34),rgba(47,168,118,0));pointer-events:none}
+.mt-hero__inner{display:flex;flex-direction:column;gap:16px}
+.mt-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:0;padding:0;list-style:none;font-size:13px;color:var(--on-dark-3)}
+.mt-crumbs a{color:var(--on-dark-2);text-decoration:none}
+.mt-crumbs a:hover{color:var(--emerald-bright)}
+.mt-crumbs li{display:flex;align-items:center;gap:8px}
+.mt-crumbs li + li::before{content:"";width:5px;height:5px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.7}
+.mt-hero__title{max-width:920px;font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,1.15rem + 2.3vw,2.9rem);line-height:1.12;letter-spacing:-.025em;color:var(--on-dark);text-wrap:balance}
+.mt-hero__title .accent{color:var(--emerald-bright)}
+.mt-hero__lead{max-width:720px;font-size:clamp(1rem,.93rem + .3vw,1.15rem);line-height:1.6;color:var(--on-dark-2);text-wrap:pretty}
+.mt-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.mt-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(244,239,230,.07);box-shadow:inset 0 0 0 1px rgba(244,239,230,.14);color:var(--cream);font-size:13px;font-weight:500;line-height:1.3}
+.mt-chip .icon{width:15px;height:15px;color:var(--emerald-bright)}
+.mt-chip--accent{background:rgba(61,220,151,.12);box-shadow:inset 0 0 0 1px rgba(61,220,151,.32);color:#BFF3DA}
+@media (min-width:1024px){.mt-hero{padding:calc(var(--header-h) + 48px) 0 52px}.mt-hero__inner{gap:20px}}
+
+/* ---------- Тело страницы ---------- */
+.mt-body{padding:24px 0 clamp(2.5rem,1.6rem + 4vw,4.5rem)}
+.mt-grid{display:flex;flex-direction:column;gap:16px}
+/* На телефоне порядок: чек-лист, условия, шаги, ошибки -> пошлины и помощь -> источники */
+.mt-main{display:contents}
+.mt-main > *{order:1}
+.mt-aside{order:2;display:flex;flex-direction:column;gap:14px;min-width:0}
+.mt-main > .mt-card--sources{order:3}
+@media (min-width:1024px){
+  .mt-body{padding-top:36px}
+  .mt-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+  .mt-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+  .mt-main > *,.mt-main > .mt-card--sources,.mt-aside{order:0}
+  .mt-aside{position:sticky;top:calc(var(--header-h) + 20px)}
+}
+
+.mt ul,.mt ol{margin:0;padding:0;list-style:none}
+.mt-card{display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:22px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line);scroll-margin-top:calc(var(--header-h) + 12px)}
+.mt-card > h2,.mt-h2{font-family:var(--font-display);font-size:clamp(1.2rem,1.05rem + .6vw,1.5rem);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.mt-h2--light{color:var(--on-dark)}
+.mt-card p{font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+.mt-card a:not(.btn):not(.ck-btn),.mt-note a{color:var(--emerald-deep);text-underline-offset:2px}
+.mt-card a:not(.btn):not(.ck-btn):hover,.mt-note a:hover{color:var(--emerald-ink)}
+.mt-card .mt-small,.mt-small{font-size:13px;line-height:1.55;color:var(--ink-3)}
+@media (min-width:768px){.mt-card{padding:28px;border-radius:26px;gap:16px}}
+
+/* Условия, предупреждения, пояснения */
+.mt-list{display:grid;gap:12px}
+.mt-list li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.mt-list li strong{color:var(--ink)}
+.mt-list .icon{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--mint);color:var(--emerald-deep);stroke-width:2.8}
+.mt-list--warn .icon{padding:3.5px;background:#FFF1DC;color:#8A5200;stroke-width:2.2}
+.mt-dots{display:grid;gap:10px}
+.mt-dots li{position:relative;padding-left:20px;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.mt-dots li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--emerald)}
+.mt-card .mt-note,.mt-note{padding:14px 16px;border-radius:14px;background:var(--sand);font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.mt-note strong{color:var(--ink)}
+.mt-more{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:15.5px;font-weight:600;text-decoration:none}
+.mt-more .icon{width:18px;height:18px;transition:transform .3s var(--ease-out)}
+.mt-more:hover .icon{transform:translateX(3px)}
+
+/* Шаги */
+.mt-steps{display:grid;gap:12px;counter-reset:mt}
+.mt-steps li{counter-increment:mt;display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.mt-steps li::before{content:counter(mt);width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--mint);color:var(--emerald-ink);font-family:var(--font-display);font-size:13px;font-weight:600}
+.mt-steps li strong{color:var(--ink)}
+
+/* ---------- Чек-лист ---------- */
+.ck-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.ck-progress{display:flex;flex-direction:column;gap:8px;flex:1 1 200px;min-width:0}
+.mt-card .ck-progress__text{font-size:14.5px;font-weight:600;line-height:1.3;color:var(--ink-2)}
+.ck-progress__text b{color:var(--emerald-deep);font-variant-numeric:tabular-nums}
+.ck-progress__track{height:6px;border-radius:99px;background:var(--mint);overflow:hidden}
+.ck-progress__fill{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--emerald),var(--emerald-bright));transition:width .4s var(--ease-out)}
+.ck-actions,.ck-share{display:flex;flex-wrap:wrap;gap:8px}
+.ck-share[hidden]{display:none}
+.ck-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line-2);color:var(--ink);font:inherit;font-size:14.5px;font-weight:600;line-height:1.2;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:box-shadow .2s,background-color .2s,color .2s}
+.ck-btn:hover{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(47,168,118,.6)}
+.ck-btn[aria-expanded="true"]{background:var(--mint-2);box-shadow:inset 0 0 0 1px rgba(47,168,118,.6)}
+.ck-btn .icon{width:17px;height:17px}
+.ck-btn--ghost{min-height:36px;padding:0 4px;background:transparent;box-shadow:none;color:var(--ink-3);font-size:14px}
+.ck-btn--ghost:hover{box-shadow:none;color:var(--ink)}
+.ck-btn--ghost[hidden]{display:none}
+.ck-groups{display:grid;gap:18px}
+.ck-group{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ck-group h3{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.ck-group ul{display:grid;gap:6px}
+.ck{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .2s,box-shadow .2s}
+.ck:hover{box-shadow:inset 0 0 0 1px rgba(47,168,118,.5)}
+.ck__cb{appearance:none;-webkit-appearance:none;width:24px;height:24px;margin:0;border-radius:8px;background:var(--white);box-shadow:inset 0 0 0 2px rgba(20,24,26,.3);cursor:pointer;transition:background-color .2s,box-shadow .2s}
+.ck__cb:checked{background:var(--emerald) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E1112' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat;box-shadow:none}
+.ck__cb:focus-visible{outline:2px solid var(--emerald-deep);outline-offset:2px}
+.ck:has(.ck__cb:checked){background:var(--mint-2)}
+.ck__text{display:flex;flex-direction:column;gap:2px;min-width:0;overflow-wrap:anywhere}
+.ck__name{font-size:15px;font-weight:600;line-height:1.4;color:var(--ink)}
+.ck__hint{font-size:13.5px;line-height:1.45;color:var(--ink-3)}
+.ck-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.mt-card .ck-foot{flex:1 1 260px;font-size:13px;line-height:1.5;color:var(--ink-3)}
+@media (min-width:768px){.ck-groups--2{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+
+/* ---------- Боковая колонка ---------- */
+.mt-fee{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:20px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line)}
+.mt-fee__label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.mt-fee__sum{font-family:var(--font-display);font-size:21px;font-weight:600;line-height:1.2;color:var(--ink)}
+.mt-fee__sum small{display:block;margin-top:5px;font-family:var(--font-body);font-size:13.5px;font-weight:500;line-height:1.4;color:var(--ink-3)}
+.mt-fee a{font-size:14.5px;font-weight:600;color:var(--emerald-deep);text-underline-offset:2px}
+.mt-cta{position:relative;display:flex;flex-direction:column;gap:12px;padding:22px 20px;border-radius:22px;background:var(--graphite);color:var(--on-dark);overflow:hidden;isolation:isolate}
+.mt-cta::before{content:"";position:absolute;z-index:-1;width:320px;height:320px;right:-140px;top:-160px;border-radius:50%;background:radial-gradient(closest-side,rgba(47,168,118,.32),rgba(47,168,118,0))}
+.mt-cta__kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--emerald-bright)}
+.mt-cta__title{font-family:var(--font-display);font-size:18px;font-weight:500;line-height:1.35}
+.mt-cta p:not([class]){font-size:14.5px;line-height:1.55;color:var(--on-dark-2)}
+.mt-cta .btn{white-space:normal;text-align:center}
+.mt-cta--light{background:var(--mint-2);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(47,168,118,.22)}
+.mt-cta--light::before{display:none}
+.mt-cta--light .mt-cta__kicker{color:var(--emerald-ink)}
+
+/* Источники */
+.mt-card--sources{background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.mt-sources{display:grid;gap:8px}
+.mt-sources li{position:relative;padding-left:18px;font-size:14px;line-height:1.5}
+.mt-sources li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--ink-3)}
+.mt-card .mt-sources a{color:var(--ink-2);overflow-wrap:anywhere}
+.mt-card .mt-verified{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--emerald-ink)}
+.mt-verified .icon{width:18px;height:18px;padding:3px;border-radius:50%;background:var(--mint);stroke-width:2.8}
+
+/* ---------- Секции: связанные страницы, главная раздела ---------- */
+.mt-section{position:relative;padding-block:clamp(2.5rem,1.6rem + 4vw,5rem)}
+.mt-related .mt-h2{margin-bottom:18px}
+.mt-stack{display:flex;flex-direction:column;gap:36px}
+.mt-block{display:flex;flex-direction:column;gap:16px;scroll-margin-top:calc(var(--header-h) + 12px)}
+.mt-block__head{display:flex;flex-direction:column;gap:6px;margin-bottom:2px}
+.mt-block__head p{font-size:15px;line-height:1.5;color:var(--ink-3)}
+#szablony{scroll-margin-top:var(--header-h)}
+#szablony .mt-block__head{margin-bottom:18px}
+@media (min-width:1024px){.mt-stack{gap:48px}}
+
+/* Полоса с призывом */
+.mt-band{overflow:hidden;overflow:clip;isolation:isolate}
+.mt-band .mt-hero__glow{right:auto;left:-300px;top:-260px}
+.mt-band__grid{display:grid;gap:22px}
+.mt-band__text{display:flex;flex-direction:column;gap:12px}
+.mt-band__text p{max-width:560px;font-size:16px;line-height:1.6;color:var(--on-dark-2)}
+.mt-band__cta{display:flex;flex-direction:column;gap:10px}
+.mt-band__cta .btn{white-space:normal}
+@media (min-width:640px){.mt-band__cta{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:1024px){.mt-band__grid{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:48px}}
+.mt-how{display:flex;flex-direction:column;gap:18px;max-width:860px}
+
+/* ---------- Шаблоны документов ---------- */
+.tpl-grid{display:grid;gap:10px}
+.tpl{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:20px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line)}
+.tpl__head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tpl__icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--sand);color:var(--ink-2)}
+.tpl__icon .icon{width:20px;height:20px}
+.tpl__status{padding:5px 10px;border-radius:999px;background:var(--sand);color:var(--ink-3);font-size:12px;font-weight:600}
+.tpl.is-ready .tpl__status{background:var(--mint);color:var(--emerald-ink)}
+.tpl.is-ready .tpl__icon{background:var(--mint);color:var(--emerald-deep)}
+.tpl__title{font-family:var(--font-display);font-size:15.5px;font-weight:500;line-height:1.3;color:var(--ink)}
+.tpl__text{flex-grow:1;font-size:14px;line-height:1.5;color:var(--ink-3)}
+.tpl__get{align-self:flex-start;margin-top:4px}
+@media (min-width:640px){.tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.tpl-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.tpl{padding:22px}}
+
+/* Окно «шаблон за контакт» (само окно - .sheet из site.css) */
+.tpl-form{display:flex;flex-direction:column;gap:12px}
+.tpl-form[hidden],.tpl-done[hidden],.tpl-form__err[hidden]{display:none}
+.tpl-form__err{font-size:13.5px;font-weight:500;color:var(--danger)}
+.tpl-form__legal{font-size:12.5px;line-height:1.5;color:var(--ink-3)}
+.tpl-form__legal a{color:var(--emerald-deep)}
+.tpl-done{display:flex;flex-direction:column;gap:14px}
+
+/* ---------- Пошлины ---------- */
+.mt-table-wrap{border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.mt-table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.45}
+.mt-table th,.mt-table td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.mt-table thead th{background:var(--paper);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.mt-table tbody th{font-weight:500;color:var(--ink)}
+.mt-table tbody tr:last-child th,.mt-table tbody tr:last-child td{border-bottom:0}
+.mt-table td{white-space:nowrap;font-weight:600;color:var(--ink)}
+.mt-table th small{display:block;margin-top:2px;font-size:13px;font-weight:400;color:var(--ink-3)}
+/* Телефон: каждая строка таблицы - карточка «основание + две суммы», без горизонтальной прокрутки */
+@media (max-width:599px){
+  .mt-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .mt-table tbody{display:block}
+  .mt-table tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;padding:14px;border-bottom:1px solid var(--line)}
+  .mt-table tbody tr:last-child{border-bottom:0}
+  .mt-table tbody th{grid-column:1 / -1;padding:0;border:0;font-weight:600}
+  .mt-table td{display:flex;flex-direction:column;gap:1px;padding:0;border:0;white-space:normal}
+  .mt-table td::before{content:attr(data-label);font-size:12.5px;font-weight:500;color:var(--ink-3)}
+}
+.mt-links{display:grid;gap:8px}
+.mt-card .mt-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:10px 14px;border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);color:var(--ink);text-decoration:none;transition:box-shadow .2s}
+.mt-card .mt-links a:hover{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(47,168,118,.5)}
+.mt-links__text{display:flex;flex-direction:column;gap:1px;min-width:0}
+.mt-links__text b{font-size:15px;font-weight:600}
+.mt-links__text span{font-size:13px;color:var(--ink-3)}
+.mt-links .icon{width:16px;height:16px;flex-shrink:0;color:var(--emerald-deep)}
+@media (min-width:640px){.mt-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Политика конфиденциальности (privacy.html): три языка на одной странице ---------- */
+/* Заголовок: слово «конфиденциальности» в Unbounded шире экрана телефона - размер шрифта подгоняем под ширину (ширина слова = 14 размеров шрифта) */
+.lg-title{font-size:min(clamp(1.7rem,1.15rem + 2.3vw,2.9rem),calc((100vw - 2 * var(--gutter)) / 14.3));overflow-wrap:anywhere}
+.lg-langs{display:flex;flex-wrap:wrap;gap:8px}
+.lg-langs a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:rgba(244,239,230,.07);box-shadow:inset 0 0 0 1px rgba(244,239,230,.22);color:var(--cream);font-size:14.5px;font-weight:600;text-decoration:none;transition:box-shadow .2s,color .2s}
+.lg-langs a:hover{color:var(--emerald-bright);box-shadow:inset 0 0 0 1px rgba(61,220,151,.6)}
+.lg-doc{display:flex;flex-direction:column;gap:16px;min-width:0}
+.lg-doc + .lg-doc{margin-top:20px;padding-top:32px;border-top:1px solid rgba(20,24,26,.12)}
+.lg-doc__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.lg-doc__title{font-family:var(--font-display);font-size:clamp(1.25rem,1.08rem + .7vw,1.6rem);font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.lg-doc__meta{display:flex;flex-direction:column;font-size:13.5px;line-height:1.5;color:var(--ink-3)}
+.lg-doc__sep{display:none}
+@media (min-width:480px){.lg-doc__meta{flex-direction:row;gap:6px}.lg-doc__sep{display:inline}}
+.lg-doc .mt-card > h3{font-family:var(--font-display);font-size:clamp(1.02rem,.96rem + .32vw,1.2rem);font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.lg-doc .mt-card--short{background:var(--mint-2);box-shadow:inset 0 0 0 1px rgba(47,168,118,.22)}
+.lg-doc .mt-card--short .mt-list .icon{background:var(--white)}
+.lg-doc .mt-card a{overflow-wrap:anywhere}
+@media (min-width:1024px){.lg-doc{gap:18px}}
+
+/* ---------- Подвал: на страницах раздела нет нижней плавающей панели ---------- */
+.mt + .site-footer{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+@media (min-width:1024px){.mt + .site-footer{padding-bottom:48px}}
+
+/* ---------- Печать чек-листа ---------- */
+.mt-print-only{display:none}
+@media print{
+  @page{margin:14mm}
+  .site-header,.mobile-menu,.site-footer,.cookie,dialog,.mt-aside,.ck-actions,.ck-share,.ck-bottom .ck-btn,.mt-related,.mt-band,.skip-link,.mt-hero__glow,.hero__pattern,.mt-more,.ck-progress__track{display:none!important}
+  html,body{background:#fff!important;color:#000!important}
+  .mt-hero{padding:0 0 6mm!important;background:#fff!important;color:#000!important}
+  .mt-hero nav{display:none!important}
+  .mt-hero__title,.mt-hero__title .accent,.mt-hero__lead{color:#000!important}
+  .mt-hero__title{font-size:20pt!important}
+  .mt-chip{background:none!important;box-shadow:none!important;color:#000!important;padding:0 10px 0 0!important}
+  .mt-chip .icon{display:none}
+  .mt-body{padding:0!important;background:#fff!important}
+  .mt-grid,.mt-main{display:block!important}
+  .mt-card{margin:0 0 6mm!important;padding:0!important;box-shadow:none!important;border-radius:0!important;background:none!important}
+  .mt-card > h2{font-size:14pt!important}
+  .lg-doc{display:block!important}
+  .lg-doc + .lg-doc{break-before:page;margin:0!important;padding:0!important;border:0!important}
+  .lg-doc__head{margin-bottom:5mm}
+  .lg-doc .mt-card > h3{font-size:12pt!important}
+  .lg-doc [data-cookie-settings]{display:none!important}
+  .ck-groups{display:block!important}
+  .ck-group{margin-bottom:4mm;break-inside:avoid}
+  .ck{padding:5px 0!important;background:none!important;box-shadow:none!important;break-inside:avoid}
+  .ck__cb{box-shadow:inset 0 0 0 1.5px #000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mt-note{padding:0!important;background:none!important}
+  .mt-list li,.mt-steps li{break-inside:avoid}
+  .mt-card--sources a::after{content:" (" attr(href) ")";font-size:9pt;word-break:break-all}
+  .mt-print-only{display:block;font-size:10pt;color:#333}
+  a{color:#000!important;text-decoration:none!important}
+}
