@@ -109,6 +109,7 @@
   <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.85.85c0 1.65-2.45 2.2-2.45 3.85"/><path d="M12 17.3h.01"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
@@ -142,7 +143,6 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header" data-header>
-  <div class="read-progress" aria-hidden="true"><span data-read-progress></span></div>
   <div class="container site-header__inner">
     <a class="logo" href="./" aria-label="Residia - home"><svg class="logo__svg" aria-hidden="true"><use href="#i-logo"/></svg></a>
     <nav class="nav" aria-label="Page navigation">
@@ -192,7 +192,7 @@
         <h1 class="hero__title reveal-words">
           <span style="--i:0">Your</span> <span style="--i:1">residence</span> <span style="--i:2">card</span> <span style="--i:3">application</span> <span style="--i:4">in</span> <span style="--i:5">Poland</span> <span class="accent" style="--i:6">from&nbsp;500&nbsp;zł</span>
         </h1>
-        <p class="hero__lead">We check your documents, fill in the application (wniosek) and file it via MOS 2.0 as your official representative (pełnomocnik). Need full service? We’ll take your case all the way to the card.</p>
+        <p class="hero__lead">We check your documents, fill in the application (wniosek) and file it via <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-mos">MOS 2.0</button><span class="term__tip" role="tooltip" id="tip-mos">The government online system for filing residence card applications (Moduł Obsługi Spraw)</span></span> as your official representative (pełnomocnik). Need full service? We’ll take your case all the way to the card.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary btn--lg" href="#form" data-cta="hero">Get a free assessment <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn--ghost-dark btn--lg" href="#steps">How it works</a>
@@ -208,7 +208,7 @@
         <svg class="hero__mark"><use href="#i-mark"/></svg>
         <div class="tracker" data-tracker>
           <div class="tracker__head">
-            <span class="tracker__meta"><span class="tracker__label">Your case</span><span class="tracker__title">Karta pobytu · praca</span></span>
+            <span class="tracker__meta"><span class="tracker__label">How your case looks with us</span><span class="tracker__title">Karta pobytu · praca</span></span>
             <span class="tracker__status">In progress</span>
           </div>
           <div class="tracker__bar"><span data-tracker-bar></span></div>
@@ -220,11 +220,11 @@
             <li data-state="next"><span class="tracker__dot"><svg class="icon"><use href="#i-check"/></svg></span><span class="tracker__name">Decision and card</span><span class="tracker__when">next</span></li>
           </ol>
         </div>
-        <div class="chip chip--upo float">
+        <div class="chip chip--upo">
           <span class="chip__icon"><svg class="icon"><use href="#i-file"/></svg></span>
           <span><strong>UPO received</strong>filing confirmed</span>
         </div>
-        <div class="chip chip--expert float float--slow">
+        <div class="chip chip--expert">
           <span class="chip__avatar"><img src="../img/vadim-avatar.jpg" alt="" width="54" height="54" loading="lazy" decoding="async"></span>
           <span><strong>Vadim Rogozhnikov</strong>founder of Residia</span>
         </div>
@@ -233,39 +233,10 @@
   </section>
 
   <div class="ticker" role="region" aria-label="Residia in brief">
-    <ul class="ticker__track" role="list">
-      <li>All 16 voivodeships</li><li>Filing via MOS 2.0</li><li>e-Doręczenia</li><li>Profil Zaufany</li><li>Official pełnomocnik</li><li>Written contract</li><li>Online across Poland</li>
-      <li aria-hidden="true">All 16 voivodeships</li><li aria-hidden="true">Filing via MOS 2.0</li><li aria-hidden="true">e-Doręczenia</li><li aria-hidden="true">Profil Zaufany</li><li aria-hidden="true">Official pełnomocnik</li><li aria-hidden="true">Written contract</li><li aria-hidden="true">Online across Poland</li>
+    <ul class="ticker__track container" role="list">
+      <li>All 16 voivodeships</li><li>e-Doręczenia</li><li>Profil Zaufany</li><li>Written contract</li><li>Online across Poland</li>
     </ul>
   </div>
-
-  <section class="expert section--sand" id="expert" aria-labelledby="expert-title">
-    <div class="container expert__grid">
-      <figure class="expert__photo" data-reveal>
-        <picture>
-          <source type="image/webp" srcset="../img/vadim-rogozhnikov.webp">
-          <img class="expert__img" src="../img/vadim-rogozhnikov.jpg" alt="Vadim Rogozhnikov, founder of Residia" width="800" height="1000" loading="lazy" decoding="async" fetchpriority="low">
-        </picture>
-        <figcaption class="expert__caption">
-          <strong>Vadim Rogozhnikov</strong>
-          <span>Founder of Residia</span>
-          <a href="https://www.instagram.com/residia.consulting/" target="_blank" rel="noopener">Case breakdowns on Instagram <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-        </figcaption>
-      </figure>
-      <div class="expert__text">
-        <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Who handles your case</p>
-        <h2 class="h2" id="expert-title" data-reveal>Honest. No empty promises.</h2>
-        <p class="lead" data-reveal>Residia is real people with names and faces. Before you pay, we’ll tell you honestly whether you have a chance. After that, we run your case so you can see every step.</p>
-        <p class="lead" data-reveal>We don’t promise a “guaranteed card” - the decision is made by the voivode. We take responsibility for what depends on us: documents without mistakes, filing on time and an answer to every request from the office.</p>
-        <ul class="stats" role="list" data-reveal>
-          <li><strong data-count="400" data-suffix="+">400+</strong><span>legalization cases - Vadim’s personal experience</span></li>
-          <li><strong data-count="16">16</strong><span>voivodeships - we work across Poland</span></li>
-          <li><strong>0&nbsp;zł</strong><span>for the eligibility check</span></li>
-        </ul>
-        <p class="expert__team" data-reveal><span class="avatars" aria-hidden="true"><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span></span>A personal manager for every case - no call centres, no bots</p>
-      </div>
-    </div>
-  </section>
 
   <section class="steps section--paper" id="steps" aria-labelledby="steps-title">
     <div class="container steps__grid">
@@ -273,7 +244,6 @@
         <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>How your case goes</p>
         <h2 class="h2" id="steps-title" data-reveal>8 steps from request to card</h2>
         <p class="lead" data-reveal>You always know what is happening with your case and who is responsible for the next step.</p>
-        <p class="legend" data-reveal><span class="tag tag--mint">“Filing”: steps 1-5</span><span class="tag tag--dark">“Full service”: steps 1-8</span></p>
       </div>
 
       <div class="steps__timeline" data-steps>
@@ -282,15 +252,15 @@
           <li class="step">
             <span class="step__num">01</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Free assessment</h3><span class="tag tag--mint">Both packages</span></div>
+              <div class="step__head"><h3 class="step__title">Free assessment</h3></div>
               <p><strong>You:</strong> leave a request on the website or message us.</p>
-              <p><strong>We:</strong> honestly assess your chances and choose the right legal basis.</p>
+              <p><strong>We:</strong> assess your chances and choose the right legal basis.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">02</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Contract and start</h3><span class="tag tag--mint">Both packages</span></div>
+              <div class="step__head"><h3 class="step__title">Contract and start</h3></div>
               <p><strong>You:</strong> sign the contract and pay 500&nbsp;zł.</p>
               <p><strong>We:</strong> send you a document checklist for your situation.</p>
             </div>
@@ -298,31 +268,31 @@
           <li class="step">
             <span class="step__num">03</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Profil Zaufany and <span class="nowrap">e-Doręczenia</span></h3><span class="tag tag--mint">Both packages</span></div>
+              <div class="step__head"><h3 class="step__title"><span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-pz">Profil Zaufany</button><span class="term__tip" role="tooltip" id="tip-pz">A free e-signature for Polish public services - used to sign the application online</span></span> and <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-edor">e-Doręczenia</button><span class="term__tip" role="tooltip" id="tip-edor">An electronic address for official letters from public offices - instead of registered mail</span></span></h3></div>
               <p><strong>We:</strong> help you create or restore your trusted profile and set up an address for letters from the office.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">04</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Documents</h3><span class="tag tag--mint">Both packages</span></div>
+              <div class="step__head"><h3 class="step__title">Documents</h3></div>
               <p><strong>You:</strong> collect the papers from the checklist.</p>
-              <p><strong>We:</strong> contact your employer ourselves (załącznik nr 1, ZUS and tax office certificates) and check every document.</p>
+              <p><strong>We:</strong> contact your employer ourselves (<span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-zal1">załącznik nr 1</button><span class="term__tip" role="tooltip" id="tip-zal1">Annex No. 1 to the application - filled in and signed by the employer</span></span>, <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-zus">ZUS</button><span class="term__tip" role="tooltip" id="tip-zus">Zakład Ubezpieczeń Społecznych - the Polish social insurance institution</span></span> and tax office certificates) and check every document.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">05</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Filing via MOS 2.0</h3><span class="tag tag--mint">Both packages</span></div>
+              <div class="step__head"><h3 class="step__title">Filing via MOS 2.0</h3></div>
               <p><strong>We:</strong> fill in the application (wniosek) and file it.</p>
-              <p><strong>You get:</strong> the UPO and case number - proof that your application was filed.</p>
-              <p class="step__pay">“Full service”: the 1000&nbsp;zł is paid only at this point</p>
+              <p><strong>You get:</strong> the <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-upo">UPO</button><span class="term__tip" role="tooltip" id="tip-upo">Urzędowe Poświadczenie Odbioru - electronic confirmation that the application has been filed</span></span> and case number - proof that your application was filed.</p>
+              <p class="step__pay">Support until the card: the 1000&nbsp;zł is paid only at this point</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">06</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Fingerprints</h3><span class="tag tag--dark">Full service</span></div>
+              <div class="step__head"><h3 class="step__title">Fingerprints</h3><span class="tag tag--dark">With support until the card</span></div>
               <p><strong>You:</strong> come to the office on the appointed day.</p>
               <p><strong>We:</strong> keep track of the invitation and deadlines; if the case stalls, we suggest a formal reminder (ponaglenie).</p>
             </div>
@@ -330,40 +300,39 @@
           <li class="step">
             <span class="step__num">07</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Wezwania and certificates</h3><span class="tag tag--dark">Full service</span></div>
+              <div class="step__head"><h3 class="step__title"><span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-wezwania">Wezwania</button><span class="term__tip" role="tooltip" id="tip-wezwania">Letters from the office asking for more documents or to come in person</span></span> and certificates</h3><span class="tag tag--dark">With support until the card</span></div>
               <p><strong>We:</strong> answer the inspector’s requests and renew certificates on time - the office accepts ZUS and tax office certificates no older than a month.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">08</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Decision and card</h3><span class="tag tag--dark">Full service</span></div>
+              <div class="step__head"><h3 class="step__title">Decision and card</h3><span class="tag tag--dark">With support until the card</span></div>
               <p><strong>You:</strong> receive the decision and collect your card.</p>
-              <p><strong>We:</strong> stay in touch until that moment.</p>
             </div>
           </li>
         </ol>
       </div>
 
       <figure class="waits" data-waits aria-labelledby="waits-title">
-        <figcaption><span class="waits__title" id="waits-title">How long a decision takes</span><span class="waits__sub">Average time across our cases, months</span></figcaption>
+        <figcaption><span class="waits__title" id="waits-title">How long a decision takes</span><span class="waits__sub">Average time across our cases</span></figcaption>
         <ul class="waits__list" role="list">
-          <li style="--v:19;--i:0"><span>Opole</span><span class="waits__bar"></span><b>19</b></li>
-          <li style="--v:16;--i:1"><span>Wrocław</span><span class="waits__bar"></span><b>16</b></li>
-          <li class="is-hl" style="--v:12;--i:2"><span>Warsaw</span><span class="waits__bar"></span><b>12</b></li>
-          <li style="--v:11;--i:3"><span>Poznań</span><span class="waits__bar"></span><b>11</b></li>
-          <li style="--v:10;--i:4"><span>Gdańsk</span><span class="waits__bar"></span><b>10</b></li>
-          <li style="--v:9;--i:5"><span>Katowice</span><span class="waits__bar"></span><b>9</b></li>
-          <li style="--v:9;--i:6"><span>Szczecin</span><span class="waits__bar"></span><b>9</b></li>
-          <li style="--v:8;--i:7"><span>Gorzów</span><span class="waits__bar"></span><b>8</b></li>
-          <li style="--v:7;--i:8"><span>Łódź</span><span class="waits__bar"></span><b>7</b></li>
-          <li style="--v:7;--i:9"><span>Bydgoszcz</span><span class="waits__bar"></span><b>7</b></li>
-          <li style="--v:6;--i:10"><span>Rzeszów</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:6;--i:11"><span>Białystok</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:6;--i:12"><span>Olsztyn</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:5;--i:13"><span>Kraków</span><span class="waits__bar"></span><b>5</b></li>
-          <li style="--v:5;--i:14"><span>Lublin</span><span class="waits__bar"></span><b>5</b></li>
-          <li style="--v:4;--i:15"><span>Kielce</span><span class="waits__bar"></span><b>4</b></li>
+          <li style="--v:19;--i:0"><span>Opole</span><span class="waits__bar"></span><b>19&nbsp;mo.</b></li>
+          <li style="--v:16;--i:1"><span>Wrocław</span><span class="waits__bar"></span><b>16&nbsp;mo.</b></li>
+          <li class="is-hl" style="--v:12;--i:2"><span>Warsaw</span><span class="waits__bar"></span><b>12&nbsp;mo.</b></li>
+          <li style="--v:11;--i:3"><span>Poznań</span><span class="waits__bar"></span><b>11&nbsp;mo.</b></li>
+          <li style="--v:10;--i:4"><span>Gdańsk</span><span class="waits__bar"></span><b>10&nbsp;mo.</b></li>
+          <li style="--v:9;--i:5"><span>Katowice</span><span class="waits__bar"></span><b>9&nbsp;mo.</b></li>
+          <li style="--v:9;--i:6"><span>Szczecin</span><span class="waits__bar"></span><b>9&nbsp;mo.</b></li>
+          <li style="--v:8;--i:7"><span>Gorzów</span><span class="waits__bar"></span><b>8&nbsp;mo.</b></li>
+          <li style="--v:7;--i:8"><span>Łódź</span><span class="waits__bar"></span><b>7&nbsp;mo.</b></li>
+          <li style="--v:7;--i:9"><span>Bydgoszcz</span><span class="waits__bar"></span><b>7&nbsp;mo.</b></li>
+          <li style="--v:6;--i:10"><span>Rzeszów</span><span class="waits__bar"></span><b>6&nbsp;mo.</b></li>
+          <li style="--v:6;--i:11"><span>Białystok</span><span class="waits__bar"></span><b>6&nbsp;mo.</b></li>
+          <li style="--v:6;--i:12"><span>Olsztyn</span><span class="waits__bar"></span><b>6&nbsp;mo.</b></li>
+          <li style="--v:5;--i:13"><span>Kraków</span><span class="waits__bar"></span><b>5&nbsp;mo.</b></li>
+          <li style="--v:5;--i:14"><span>Lublin</span><span class="waits__bar"></span><b>5&nbsp;mo.</b></li>
+          <li style="--v:4;--i:15"><span>Kielce</span><span class="waits__bar"></span><b>4&nbsp;mo.</b></li>
         </ul>
         <p class="waits__note">2026 data from the cases we handle. An exact forecast for your case - at the assessment.</p>
       </figure>
@@ -373,10 +342,10 @@
   <section class="packages section--dark" id="packages" aria-labelledby="packages-title" data-view-content>
     <div class="packages__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-head section-head--split">
+      <div class="section-head">
         <div>
           <p class="eyebrow eyebrow--light" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Residence card based on work</p>
-          <h2 class="h2" id="packages-title" data-reveal>Two packages. The price is known upfront.</h2>
+          <h2 class="h2" id="packages-title" data-reveal>Two packages</h2>
         </div>
         <p class="lead lead--muted" data-reveal>Filing only - or support until you get the card. You can upgrade your package after filing, too.</p>
       </div>
@@ -415,14 +384,157 @@
     </div>
   </section>
 
-  <section class="services section--sand" id="services" aria-labelledby="services-title">
+  <section class="expert section--sand" id="expert" aria-labelledby="expert-title">
+    <div class="container expert__grid">
+      <figure class="expert__photo" data-reveal>
+        <picture>
+          <source type="image/webp" srcset="../img/vadim-rogozhnikov.webp">
+          <img class="expert__img" src="../img/vadim-rogozhnikov.jpg" alt="Vadim Rogozhnikov, founder of Residia" width="800" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+        </picture>
+        <figcaption class="expert__caption">
+          <strong>Vadim Rogozhnikov</strong>
+          <span>Founder of Residia</span>
+          <a href="https://www.instagram.com/residia.consulting/" target="_blank" rel="noopener">Case breakdowns on Instagram <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
+        </figcaption>
+      </figure>
+      <div class="expert__text">
+        <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Who handles your case</p>
+        <h2 class="h2" id="expert-title" data-reveal>400+ legalization cases</h2>
+        <p class="lead" data-reveal>Before you pay, we’ll tell you whether you have a chance. After that, we run your case so you can see every step.</p>
+        <p class="lead" data-reveal>We don’t promise a “guaranteed card” - the decision is made by the voivode. We take responsibility for what depends on us: documents without mistakes, filing on time and an answer to every request from the office.</p>
+        <ul class="stats" role="list" data-reveal>
+          <li><strong data-count="16">16</strong><span>voivodeships - we work across Poland</span></li>
+          <li><strong>0&nbsp;zł</strong><span>for the eligibility check</span></li>
+        </ul>
+        <p class="expert__team" data-reveal><span class="avatars" aria-hidden="true"><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span></span>A personal manager for every case</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews section--paper" id="reviews" aria-labelledby="reviews-title">
     <div class="container">
       <div class="section-head section-head--split">
         <div>
-          <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>We also help with</p>
-          <h2 class="h2" id="services-title" data-reveal>Not only the residence card</h2>
+          <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Reviews</p>
+          <h2 class="h2" id="reviews-title" data-reveal>What clients say on Google</h2>
         </div>
-        <p class="lead" data-reveal>We quote these services after a free assessment - every situation is different. Blue Card, studies and changing the basis of your stay - we handle those too.</p>
+        <p class="lead" data-reveal>Real reviews on Google Maps - unedited and unfiltered.</p>
+      </div>
+      <div class="reviews__cta" data-reveal>
+        <div class="reviews__cta-text">
+          <span class="reviews__badge"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Residia on Google Maps</span>
+          <p>Read what our clients write - or leave a review if we’ve already handled your case.</p>
+        </div>
+        <div class="reviews__cta-actions">
+          <a class="btn btn--dark" href="https://share.google/b7iVmemJ3CzmmjRDz" target="_blank" rel="noopener" data-track="reviews_open">Reviews on Google <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn--outline" href="https://share.google/b7iVmemJ3CzmmjRDz" target="_blank" rel="noopener" data-track="review_leave">Leave a review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quiz-section section--dark" id="form" aria-labelledby="form-title" data-form-section>
+    <span class="anchor-alias" id="contact" aria-hidden="true"></span>
+    <div class="quiz-section__glow" aria-hidden="true"></div>
+    <div class="container quiz-section__grid">
+      <div class="quiz-section__intro">
+        <p class="eyebrow eyebrow--light" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Free assessment</p>
+        <h2 class="h2" id="form-title" data-reveal>Leave a request and we’ll review your case</h2>
+        <p class="lead lead--muted" data-reveal>We’ll get in touch, review your case and tell you what options you have.</p>
+      </div>
+
+      <form class="quiz lead-form" id="quiz" method="post" novalidate data-lead-form aria-labelledby="form-title">
+        <div class="lead-form__fields">
+          <div class="lead-form__pair">
+            <div class="lead-form__item">
+              <label class="field">
+                <span class="field__label">Name</span>
+                <input class="field__control" type="text" name="name" autocomplete="given-name" placeholder="What should we call you?" maxlength="60">
+              </label>
+              <p class="quiz__error-msg" data-error="name" hidden>Please tell us your name</p>
+            </div>
+            <div class="lead-form__item">
+              <label class="field">
+                <span class="field__label">Phone</span>
+                <input class="field__control" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+48 ___ ___ ___" maxlength="20">
+              </label>
+              <p class="quiz__error-msg" data-error="phone" hidden>Check the number and include the country code, e.g. +48 571 528 293</p>
+            </div>
+          </div>
+          <fieldset class="chips">
+            <legend class="field__label">What do you need?</legend>
+            <div class="chips__row">
+              <label class="option option--chip"><input type="radio" name="service" value="work"><span class="option__text">Work-based card</span></label>
+              <label class="option option--chip"><input type="radio" name="service" value="cukr"><span class="option__text">CUKR card</span></label>
+              <label class="option option--chip"><input type="radio" name="service" value="family"><span class="option__text">Family reunification</span></label>
+              <label class="option option--chip"><input type="radio" name="service" value="waiting"><span class="option__text">Speed up my case</span></label>
+              <label class="option option--chip"><input type="radio" name="service" value="other"><span class="option__text">Other</span></label>
+            </div>
+            <p class="quiz__error-msg" data-error="service" hidden>Choose what you need help with</p>
+          </fieldset>
+          <fieldset class="messengers">
+            <legend class="field__label">Preferred way to talk</legend>
+            <div class="chips__row">
+              <label class="option option--chip"><input type="radio" name="messenger" value="WhatsApp" checked><span class="option__text">WhatsApp</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Telegram"><span class="option__text">Telegram</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Viber"><span class="option__text">Viber</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Звонок"><span class="option__text">Phone call</span></label>
+            </div>
+          </fieldset>
+          <label class="field">
+            <span class="field__label">Briefly about your situation <span class="field__opt">- optional</span></span>
+            <textarea class="field__control field__control--area" name="comment" rows="2" maxlength="600" placeholder="For example: umowa o pracę, visa valid until March"></textarea>
+          </label>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--primary btn--block quiz__next" type="submit" data-form-submit>Send request <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="quiz__legal">We use your data only to contact you about your request - see our <a href="../privacy.html#en" target="_blank" rel="noopener">privacy policy</a>.</p>
+        </div>
+
+        <div class="quiz__result" data-quiz-done hidden tabindex="-1">
+          <span class="quiz__result-icon" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+          <h3 class="quiz__q">Thank you! We’ve got your request.</h3>
+          <p data-done-text>We’ll get in touch soon. Want it faster? Message us yourself:</p>
+          <div class="direct__row direct__row--light">
+            <a class="btn btn--primary" href="https://wa.me/48571528293?text=Hello!%20I%20have%20just%20sent%20a%20request%20on%20your%20website." target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+            <a class="btn btn--outline" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
+          </div>
+        </div>
+        <div class="quiz__result quiz__result--error" data-quiz-error hidden tabindex="-1">
+          <h3 class="quiz__q">We couldn’t send your request</h3>
+          <p>Check your internet connection and try again - or message us directly, we’ll reply just as quickly:</p>
+          <div class="direct__row direct__row--light">
+            <a class="btn btn--primary" href="https://wa.me/48571528293" target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+            <a class="btn btn--outline" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
+            <button class="btn btn--outline" type="button" data-quiz-retry>Try again</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="quiz-section__aside">
+        <ul class="checks" role="list" data-reveal>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>We reply within 10-15 minutes during working hours</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>If you have no chance, we’ll say so right away</li>
+        </ul>
+        <div class="direct" data-reveal>
+          <p class="direct__label">Or message us right away</p>
+          <div class="direct__row">
+            <a class="btn btn--glass" href="https://wa.me/48571528293?text=Hello!%20I%E2%80%99d%20like%20to%20check%20my%20chances%20for%20a%20residence%20card.%20(from%20the%20website)" target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+            <a class="btn btn--glass" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
+            <a class="btn btn--glass" href="tel:+48571528293" data-channel="phone"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="services section--paper" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <h2 class="h2" id="services-title" data-reveal>Other services</h2>
+        </div>
+        <p class="lead" data-reveal>We quote after a free assessment - every situation is different.</p>
       </div>
       <div class="bento">
         <article class="svc svc--hero" data-reveal>
@@ -468,127 +580,15 @@
           <p class="svc__text">A formal reminder (ponaglenie) if the office is dragging its feet.</p>
           <a class="svc__link" href="#form" data-situation="waiting"><span class="svc__link-text">Get a quote<span class="sr-only">: Speeding up your case</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="reviews section--paper" id="reviews" aria-labelledby="reviews-title">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div>
-          <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Reviews</p>
-          <h2 class="h2" id="reviews-title" data-reveal>What clients say on Google</h2>
-        </div>
-        <p class="lead" data-reveal>Real reviews on Google Maps - unedited and unfiltered.</p>
-      </div>
-      <div class="reviews__cta" data-reveal>
-        <div class="reviews__cta-text">
-          <span class="reviews__badge"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Residia on Google Maps</span>
-          <p>Read what our clients write - or leave a review if we’ve already handled your case.</p>
-        </div>
-        <div class="reviews__cta-actions">
-          <a class="btn btn--dark" href="https://share.google/b7iVmemJ3CzmmjRDz" target="_blank" rel="noopener" data-track="reviews_open">Reviews on Google <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn--outline" href="https://share.google/b7iVmemJ3CzmmjRDz" target="_blank" rel="noopener" data-track="review_leave">Leave a review</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="quiz-section section--dark" id="form" aria-labelledby="form-title" data-form-section>
-    <span class="anchor-alias" id="contact" aria-hidden="true"></span>
-    <div class="quiz-section__glow" aria-hidden="true"></div>
-    <div class="container quiz-section__grid">
-      <div class="quiz-section__intro">
-        <p class="eyebrow eyebrow--light" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Free assessment</p>
-        <h2 class="h2" id="form-title" data-reveal>Leave a request and we’ll review your case</h2>
-        <p class="lead lead--muted" data-reveal>We’ll get in touch, review your case and tell you honestly what options you have. No obligation.</p>
-      </div>
-
-      <form class="quiz lead-form" id="quiz" method="post" novalidate data-lead-form aria-labelledby="form-title">
-        <div class="lead-form__fields">
-          <div class="lead-form__pair">
-            <div class="lead-form__item">
-              <label class="field">
-                <span class="field__label">Name</span>
-                <input class="field__control" type="text" name="name" autocomplete="given-name" placeholder="What should we call you?" maxlength="60">
-              </label>
-              <p class="quiz__error-msg" data-error="name" hidden>Please tell us your name</p>
-            </div>
-            <div class="lead-form__item">
-              <label class="field">
-                <span class="field__label">Phone</span>
-                <input class="field__control" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+48 ___ ___ ___" maxlength="20">
-              </label>
-              <p class="quiz__error-msg" data-error="phone" hidden>Check the number and include the country code, e.g. +48 571 528 293</p>
-            </div>
+        <article class="svc svc--wide" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-help"/></svg></span>
+          <div class="svc__body">
+            <h3 class="svc__title">Another situation</h3>
+            <p class="svc__text">Blue Card, studies, changing the basis of your stay and other cases - we’ll review them in a free assessment.</p>
           </div>
-          <fieldset class="chips">
-            <legend class="field__label">What do you need?</legend>
-            <div class="chips__row">
-              <label class="option option--chip"><input type="radio" name="service" value="work"><span class="option__text">Work-based card</span></label>
-              <label class="option option--chip"><input type="radio" name="service" value="cukr"><span class="option__text">CUKR card</span></label>
-              <label class="option option--chip"><input type="radio" name="service" value="family"><span class="option__text">Family reunification</span></label>
-              <label class="option option--chip"><input type="radio" name="service" value="waiting"><span class="option__text">Speed up my case</span></label>
-              <label class="option option--chip"><input type="radio" name="service" value="other"><span class="option__text">Other</span></label>
-            </div>
-            <p class="quiz__error-msg" data-error="service" hidden>Choose what you need help with</p>
-          </fieldset>
-          <fieldset class="messengers">
-            <legend class="field__label">Preferred way to talk</legend>
-            <div class="messengers__grid">
-              <label class="option option--compact"><input type="radio" name="messenger" value="WhatsApp" checked><span class="option__box"></span><span class="option__text">WhatsApp</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Telegram"><span class="option__box"></span><span class="option__text">Telegram</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Viber"><span class="option__box"></span><span class="option__text">Viber</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Звонок"><span class="option__box"></span><span class="option__text">Phone call</span></label>
-            </div>
-          </fieldset>
-          <label class="field">
-            <span class="field__label">Briefly about your situation <span class="field__opt">- optional</span></span>
-            <textarea class="field__control field__control--area" name="comment" rows="3" maxlength="600" placeholder="For example: umowa o pracę, visa valid until March"></textarea>
-          </label>
-          <label class="consent"><input type="checkbox" name="consent"><span>I agree to the processing of my data so that you can contact me. <a href="../privacy.html#en" target="_blank" rel="noopener">Privacy policy</a></span></label>
-          <p class="quiz__error-msg" data-error="consent" hidden>We need your consent to contact you</p>
-          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn--primary btn--block quiz__next" type="submit" data-form-submit>Send request <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <p class="quiz__legal">By clicking the button, you agree to our <a href="../privacy.html#en" target="_blank" rel="noopener">privacy policy</a>.</p>
-        </div>
-
-        <div class="quiz__result" data-quiz-done hidden tabindex="-1">
-          <span class="quiz__result-icon" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
-          <h3 class="quiz__q">Thank you! We’ve got your request.</h3>
-          <p data-done-text>We’ll get in touch soon. Want it faster? Message us yourself:</p>
-          <div class="direct__row direct__row--light">
-            <a class="btn btn--primary" href="https://wa.me/48571528293?text=Hello!%20I%20have%20just%20sent%20a%20request%20on%20your%20website." target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
-            <a class="btn btn--outline" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
-          </div>
-        </div>
-        <div class="quiz__result quiz__result--error" data-quiz-error hidden tabindex="-1">
-          <h3 class="quiz__q">We couldn’t send your request</h3>
-          <p>Check your internet connection and try again - or message us directly, we’ll reply just as quickly:</p>
-          <div class="direct__row direct__row--light">
-            <a class="btn btn--primary" href="https://wa.me/48571528293" target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
-            <a class="btn btn--outline" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
-            <button class="btn btn--outline" type="button" data-quiz-retry>Try again</button>
-          </div>
-        </div>
-      </form>
-
-      <div class="quiz-section__aside">
-        <ul class="checks" role="list" data-reveal>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Quick, personal replies - no bots</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>We’ll tell you honestly if you have no chance</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Your data is used only to contact you</li>
-        </ul>
-        <div class="direct" data-reveal>
-          <p class="direct__label">Or message us right away</p>
-          <div class="direct__row">
-            <a class="btn btn--glass" href="https://wa.me/48571528293?text=Hello!%20I%E2%80%99d%20like%20to%20check%20my%20chances%20for%20a%20residence%20card.%20(from%20the%20website)" target="_blank" rel="noopener" data-channel="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
-            <a class="btn btn--glass" href="https://t.me/residia_consulting" target="_blank" rel="noopener" data-channel="telegram"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Telegram</a>
-            <a class="btn btn--glass" href="tel:+48571528293" data-channel="phone"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
-          </div>
-        </div>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Другая ситуация"><span class="svc__link-text">Get a quote<span class="sr-only">: Another situation</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
       </div>
-
     </div>
   </section>
 
@@ -597,7 +597,7 @@
       <div class="faq__aside">
         <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>FAQ</p>
         <h2 class="h2" id="faq-title" data-reveal>Frequently asked questions</h2>
-        <p class="lead" data-reveal>Didn’t find your answer? Message us - a real person will reply, not a bot.</p>
+        <p class="lead" data-reveal>Didn’t find your answer? Message us - we’ll reply shortly.</p>
         <button class="btn btn--dark" type="button" data-open-chat data-reveal><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Message us</button>
       </div>
       <div class="faq__list">
@@ -676,7 +676,7 @@
 </footer>
 
 <button class="chat-fab" type="button" data-open-chat aria-haspopup="dialog">
-  <span class="chat-fab__avatar" aria-hidden="true"><img src="../img/vadim-avatar.jpg" alt="" width="46" height="46" loading="lazy" decoding="async"><span class="chat-fab__dot"></span></span>
+  <span class="chat-fab__avatar" aria-hidden="true"><img src="../img/vadim-avatar.jpg" alt="" width="46" height="46" loading="lazy" decoding="async"></span>
   <span class="chat-fab__text"><strong>Message Vadim</strong><span>WhatsApp · Telegram · call</span></span>
 </button>
 
@@ -689,7 +689,7 @@
   <div class="sheet__inner">
     <span class="sheet__grabber" aria-hidden="true"></span>
     <div class="sheet__head">
-      <span class="sheet__avatar" aria-hidden="true"><img src="../img/vadim-avatar.jpg" alt="" width="56" height="56" loading="lazy" decoding="async"><span class="chat-fab__dot"></span></span>
+      <span class="sheet__avatar" aria-hidden="true"><img src="../img/vadim-avatar.jpg" alt="" width="56" height="56" loading="lazy" decoding="async"></span>
       <span class="sheet__who"><strong>Vadim Rogozhnikov</strong><span>Founder of Residia. I reply personally and as fast as I can</span></span>
       <button class="sheet__close" type="button" aria-label="Close" data-close-chat><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
@@ -721,10 +721,10 @@
 </dialog>
 
 <div class="cookie" role="region" aria-label="Cookie settings" data-cookie hidden>
-  <p>We use cookies and the Meta pixel to understand where our clients come from and to avoid showing you irrelevant ads. <a href="../privacy.html#en">Privacy policy</a></p>
+  <p>We use cookies and the Meta pixel to understand which ads bring us clients. <a href="../privacy.html#en">Privacy policy</a></p>
   <div class="cookie__actions">
     <button class="btn btn--primary btn--sm" type="button" data-cookie-accept>Accept</button>
-    <button class="btn btn--outline btn--sm" type="button" data-cookie-decline>Only necessary</button>
+    <button class="btn btn--outline btn--sm" type="button" data-cookie-decline>Decline</button>
   </div>
 </div>
 

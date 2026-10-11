@@ -108,6 +108,7 @@
   <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.85.85c0 1.65-2.45 2.2-2.45 3.85"/><path d="M12 17.3h.01"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
@@ -141,7 +142,6 @@
 <a class="skip-link" href="#main">Перейти к содержанию</a>
 
 <header class="site-header" data-header>
-  <div class="read-progress" aria-hidden="true"><span data-read-progress></span></div>
   <div class="container site-header__inner">
     <a class="logo" href="./" aria-label="Residia - на главную"><svg class="logo__svg" aria-hidden="true"><use href="#i-logo"/></svg></a>
     <nav class="nav nav--7" aria-label="Навигация по странице">
@@ -195,7 +195,7 @@
         <h1 class="hero__title reveal-words">
           <span style="--i:0">Подача</span> <span style="--i:1">на</span> <span style="--i:2">карту</span> <span style="--i:3">побыту</span> <span style="--i:4">в</span> <span style="--i:5">Польше</span> <span class="accent" style="--i:6">от&nbsp;500&nbsp;zł</span>
         </h1>
-        <p class="hero__lead">Проверим документы, заполним wniosek и подадим через MOS 2.0 как официальный pełnomocnik. Нужно под ключ - доведём дело до получения карты.</p>
+        <p class="hero__lead">Проверим документы, заполним <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-wniosek">wniosek</button><span class="term__tip" role="tooltip" id="tip-wniosek">Заявление на карту побыту - главный документ дела</span></span> и подадим через <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-mos">MOS 2.0</button><span class="term__tip" role="tooltip" id="tip-mos">Государственная онлайн-система для подачи заявлений на карту побыту (Moduł Obsługi Spraw)</span></span> как официальный <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-pelnomocnik">pełnomocnik</button><span class="term__tip" role="tooltip" id="tip-pelnomocnik">Представитель по доверенности: официально ведёт дело от вашего имени</span></span>. Нужно под ключ - доведём дело до получения карты.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary btn--lg" href="#form" data-cta="hero">Получить бесплатную диагностику <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn--ghost-dark btn--lg" href="#steps">Как проходит дело</a>
@@ -211,7 +211,7 @@
         <svg class="hero__mark"><use href="#i-mark"/></svg>
         <div class="tracker" data-tracker>
           <div class="tracker__head">
-            <span class="tracker__meta"><span class="tracker__label">Ваше дело</span><span class="tracker__title">Karta pobytu · praca</span></span>
+            <span class="tracker__meta"><span class="tracker__label">Так выглядит ваше дело у нас</span><span class="tracker__title">Karta pobytu · praca</span></span>
             <span class="tracker__status">В работе</span>
           </div>
           <div class="tracker__bar"><span data-tracker-bar></span></div>
@@ -223,11 +223,11 @@
             <li data-state="next"><span class="tracker__dot"><svg class="icon"><use href="#i-check"/></svg></span><span class="tracker__name">Решение и карта</span><span class="tracker__when">далее</span></li>
           </ol>
         </div>
-        <div class="chip chip--upo float">
+        <div class="chip chip--upo">
           <span class="chip__icon"><svg class="icon"><use href="#i-file"/></svg></span>
           <span><strong>UPO получено</strong>подача подтверждена</span>
         </div>
-        <div class="chip chip--expert float float--slow">
+        <div class="chip chip--expert">
           <span class="chip__avatar"><img src="img/vadim-avatar.jpg" alt="" width="54" height="54" loading="lazy" decoding="async"></span>
           <span><strong>Вадим Рогожников</strong>основатель Residia</span>
         </div>
@@ -236,39 +236,10 @@
   </section>
 
   <div class="ticker" role="region" aria-label="Коротко о Residia">
-    <ul class="ticker__track" role="list">
-      <li>Все 16 воеводств</li><li>Подача через MOS 2.0</li><li>e-Doręczenia</li><li>Profil Zaufany</li><li>Официальный pełnomocnik</li><li>Договор на польском + копия на украинском</li><li>Работаем онлайн по всей Польше</li>
-      <li aria-hidden="true">Все 16 воеводств</li><li aria-hidden="true">Подача через MOS 2.0</li><li aria-hidden="true">e-Doręczenia</li><li aria-hidden="true">Profil Zaufany</li><li aria-hidden="true">Официальный pełnomocnik</li><li aria-hidden="true">Договор на польском + копия на украинском</li><li aria-hidden="true">Работаем онлайн по всей Польше</li>
+    <ul class="ticker__track container" role="list">
+      <li>Все 16 воеводств</li><li>e-Doręczenia</li><li>Profil Zaufany</li><li>Договор на польском + копия на украинском</li><li>Работаем онлайн по всей Польше</li>
     </ul>
   </div>
-
-  <section class="expert section--sand" id="expert" aria-labelledby="expert-title">
-    <div class="container expert__grid">
-      <figure class="expert__photo" data-reveal>
-        <picture>
-          <source type="image/webp" srcset="img/vadim-rogozhnikov.webp">
-          <img class="expert__img" src="img/vadim-rogozhnikov.jpg" alt="Вадим Рогожников, основатель Residia" width="800" height="1000" loading="lazy" decoding="async" fetchpriority="low">
-        </picture>
-        <figcaption class="expert__caption">
-          <strong>Вадим Рогожников</strong>
-          <span>Основатель Residia</span>
-          <a href="https://www.instagram.com/residia.consulting/" target="_blank" rel="noopener">Разборы кейсов в Instagram <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-        </figcaption>
-      </figure>
-      <div class="expert__text">
-        <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Кто ведёт ваше дело</p>
-        <h2 class="h2" id="expert-title" data-reveal>Честно. Без обещаний воздуха.</h2>
-        <p class="lead" data-reveal>Residia - это конкретные люди с именами и лицами. До оплаты честно скажем, есть ли у вас шансы. После - ведём дело так, что вы видите каждый шаг.</p>
-        <p class="lead" data-reveal>Мы не обещаем «гарантированную карту»: решение принимает воевода. Мы отвечаем за то, что зависит от нас - документы без ошибок, подачу в срок и ответ на каждый запрос ужонда.</p>
-        <ul class="stats" role="list" data-reveal>
-          <li><strong data-count="400" data-suffix="+">400+</strong><span>дел в легализации - личный опыт Вадима</span></li>
-          <li><strong data-count="16">16</strong><span>воеводств - работаем по всей Польше</span></li>
-          <li><strong>0&nbsp;zł</strong><span>стоит диагностика шансов</span></li>
-        </ul>
-        <p class="expert__team" data-reveal><span class="avatars" aria-hidden="true"><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span></span>Персональный менеджер на каждое дело - без колл-центра и ботов</p>
-      </div>
-    </div>
-  </section>
 
   <section class="steps section--paper" id="steps" aria-labelledby="steps-title">
     <div class="container steps__grid">
@@ -276,7 +247,6 @@
         <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Как проходит дело</p>
         <h2 class="h2" id="steps-title" data-reveal>8 шагов от заявки до карты</h2>
         <p class="lead" data-reveal>Вы всегда знаете, что сейчас происходит с делом и кто отвечает за следующий шаг.</p>
-        <p class="legend" data-reveal><span class="tag tag--mint">«Подача»: шаги 1-5</span><span class="tag tag--dark">«Под ключ»: шаги 1-8</span></p>
       </div>
 
       <div class="steps__timeline" data-steps>
@@ -285,15 +255,15 @@
           <li class="step">
             <span class="step__num">01</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Бесплатная диагностика</h3><span class="tag tag--mint">Оба пакета</span></div>
+              <div class="step__head"><h3 class="step__title">Бесплатная диагностика</h3></div>
               <p><strong>Вы:</strong> оставляете заявку или проходите <a href="analyzer.html" data-cta="step_analyzer">анализатор шансов</a>.</p>
-              <p><strong>Мы:</strong> честно оцениваем шансы и подбираем основание.</p>
+              <p><strong>Мы:</strong> оцениваем шансы и подбираем основание.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">02</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Договор и старт</h3><span class="tag tag--mint">Оба пакета</span></div>
+              <div class="step__head"><h3 class="step__title">Договор и старт</h3></div>
               <p><strong>Вы:</strong> подписываете договор и вносите 500&nbsp;zł.</p>
               <p><strong>Мы:</strong> присылаем чек-лист документов под ваш случай.</p>
             </div>
@@ -301,72 +271,71 @@
           <li class="step">
             <span class="step__num">03</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Profil Zaufany и <span class="nowrap">e-Doręczenia</span></h3><span class="tag tag--mint">Оба пакета</span></div>
-              <p><strong>Мы:</strong> помогаем создать или восстановить профиль и настраиваем адрес для писем из ужонда.</p>
+              <div class="step__head"><h3 class="step__title"><span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-pz">Profil Zaufany</button><span class="term__tip" role="tooltip" id="tip-pz">Бесплатная электронная подпись для польских госуслуг - ею подписывают заявление онлайн</span></span> и <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-edor">e-Doręczenia</button><span class="term__tip" role="tooltip" id="tip-edor">Электронный адрес для официальных писем от госорганов - вместо заказных писем по почте</span></span></h3></div>
+              <p><strong>Мы:</strong> помогаем создать или восстановить профиль и настраиваем адрес для писем из <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-urzad">ужонда</button><span class="term__tip" role="tooltip" id="tip-urzad">Urząd Wojewódzki - воеводское управление, которое рассматривает дело</span></span>.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">04</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Документы</h3><span class="tag tag--mint">Оба пакета</span></div>
+              <div class="step__head"><h3 class="step__title">Документы</h3></div>
               <p><strong>Вы:</strong> собираете бумаги по чек-листу.</p>
-              <p><strong>Мы:</strong> сами связываемся с работодателем (załącznik nr 1, справки ZUS и US) и проверяем каждый документ.</p>
+              <p><strong>Мы:</strong> сами связываемся с работодателем (<span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-zal1">załącznik nr 1</button><span class="term__tip" role="tooltip" id="tip-zal1">Приложение № 1 к заявлению - его заполняет и подписывает работодатель</span></span>, справки <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-zus">ZUS</button><span class="term__tip" role="tooltip" id="tip-zus">Zakład Ubezpieczeń Społecznych - польский соцстрах</span></span> и <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-us">US</button><span class="term__tip" role="tooltip" id="tip-us">Urząd Skarbowy - налоговая</span></span>) и проверяем каждый документ.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">05</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Подача через MOS 2.0</h3><span class="tag tag--mint">Оба пакета</span></div>
+              <div class="step__head"><h3 class="step__title">Подача через MOS 2.0</h3></div>
               <p><strong>Мы:</strong> заполняем wniosek и подаём.</p>
-              <p><strong>Вы получаете:</strong> UPO и номер дела - подтверждение подачи.</p>
-              <p class="step__pay">«Под ключ»: 1000&nbsp;zł оплачиваются только сейчас</p>
+              <p><strong>Вы получаете:</strong> <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-upo">UPO</button><span class="term__tip" role="tooltip" id="tip-upo">Urzędowe Poświadczenie Odbioru - электронное подтверждение, что заявление подано</span></span> и номер дела - подтверждение подачи.</p>
+              <p class="step__pay">Сопровождение до карты: 1000&nbsp;zł оплачиваются только сейчас</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">06</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Отпечатки пальцев</h3><span class="tag tag--dark">Под ключ</span></div>
+              <div class="step__head"><h3 class="step__title">Отпечатки пальцев</h3><span class="tag tag--dark">При сопровождении до карты</span></div>
               <p><strong>Вы:</strong> приходите в ужонд в назначенный день.</p>
-              <p><strong>Мы:</strong> следим за приглашением и сроками, при затягивании предложим ponaglenie.</p>
+              <p><strong>Мы:</strong> следим за приглашением и сроками, при затягивании предложим <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-ponaglenie">ponaglenie</button><span class="term__tip" role="tooltip" id="tip-ponaglenie">Официальная жалоба на затягивание дела - её подают, если ужонд нарушает сроки</span></span>.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">07</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Wezwania и справки</h3><span class="tag tag--dark">Под ключ</span></div>
+              <div class="step__head"><h3 class="step__title"><span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-wezwania">Wezwania</button><span class="term__tip" role="tooltip" id="tip-wezwania">Письма из ужонда с требованием донести документы или прийти лично</span></span> и справки</h3><span class="tag tag--dark">При сопровождении до карты</span></div>
               <p><strong>Мы:</strong> отвечаем на запросы инспектора и вовремя обновляем справки - ужонд принимает ZUS и US не старше месяца.</p>
             </div>
           </li>
           <li class="step">
             <span class="step__num">08</span>
             <div class="step__card">
-              <div class="step__head"><h3 class="step__title">Решение и карта</h3><span class="tag tag--dark">Под ключ</span></div>
-              <p><strong>Вы:</strong> получаете децизию и забираете карту.</p>
-              <p><strong>Мы:</strong> на связи до этого момента.</p>
+              <div class="step__head"><h3 class="step__title">Решение и карта</h3><span class="tag tag--dark">При сопровождении до карты</span></div>
+              <p><strong>Вы:</strong> получаете решение и забираете карту.</p>
             </div>
           </li>
         </ol>
       </div>
 
       <figure class="waits" data-waits aria-labelledby="waits-title">
-        <figcaption><span class="waits__title" id="waits-title">Сколько ждать решение</span><span class="waits__sub">Средний срок по нашим делам, месяцев</span></figcaption>
+        <figcaption><span class="waits__title" id="waits-title">Сколько ждать решение</span><span class="waits__sub">Средний срок по нашим делам</span></figcaption>
         <ul class="waits__list" role="list">
-          <li style="--v:19;--i:0"><span>Ополе</span><span class="waits__bar"></span><b>19</b></li>
-          <li style="--v:16;--i:1"><span>Вроцлав</span><span class="waits__bar"></span><b>16</b></li>
-          <li class="is-hl" style="--v:12;--i:2"><span>Варшава</span><span class="waits__bar"></span><b>12</b></li>
-          <li style="--v:11;--i:3"><span>Познань</span><span class="waits__bar"></span><b>11</b></li>
-          <li style="--v:10;--i:4"><span>Гданьск</span><span class="waits__bar"></span><b>10</b></li>
-          <li style="--v:9;--i:5"><span>Катовице</span><span class="waits__bar"></span><b>9</b></li>
-          <li style="--v:9;--i:6"><span>Щецин</span><span class="waits__bar"></span><b>9</b></li>
-          <li style="--v:8;--i:7"><span>Гожув</span><span class="waits__bar"></span><b>8</b></li>
-          <li style="--v:7;--i:8"><span>Лодзь</span><span class="waits__bar"></span><b>7</b></li>
-          <li style="--v:7;--i:9"><span>Быдгощ</span><span class="waits__bar"></span><b>7</b></li>
-          <li style="--v:6;--i:10"><span>Жешув</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:6;--i:11"><span>Белосток</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:6;--i:12"><span>Ольштын</span><span class="waits__bar"></span><b>6</b></li>
-          <li style="--v:5;--i:13"><span>Краков</span><span class="waits__bar"></span><b>5</b></li>
-          <li style="--v:5;--i:14"><span>Люблин</span><span class="waits__bar"></span><b>5</b></li>
-          <li style="--v:4;--i:15"><span>Кельце</span><span class="waits__bar"></span><b>4</b></li>
+          <li style="--v:19;--i:0"><span>Ополе</span><span class="waits__bar"></span><b>19&nbsp;мес.</b></li>
+          <li style="--v:16;--i:1"><span>Вроцлав</span><span class="waits__bar"></span><b>16&nbsp;мес.</b></li>
+          <li class="is-hl" style="--v:12;--i:2"><span>Варшава</span><span class="waits__bar"></span><b>12&nbsp;мес.</b></li>
+          <li style="--v:11;--i:3"><span>Познань</span><span class="waits__bar"></span><b>11&nbsp;мес.</b></li>
+          <li style="--v:10;--i:4"><span>Гданьск</span><span class="waits__bar"></span><b>10&nbsp;мес.</b></li>
+          <li style="--v:9;--i:5"><span>Катовице</span><span class="waits__bar"></span><b>9&nbsp;мес.</b></li>
+          <li style="--v:9;--i:6"><span>Щецин</span><span class="waits__bar"></span><b>9&nbsp;мес.</b></li>
+          <li style="--v:8;--i:7"><span>Гожув</span><span class="waits__bar"></span><b>8&nbsp;мес.</b></li>
+          <li style="--v:7;--i:8"><span>Лодзь</span><span class="waits__bar"></span><b>7&nbsp;мес.</b></li>
+          <li style="--v:7;--i:9"><span>Быдгощ</span><span class="waits__bar"></span><b>7&nbsp;мес.</b></li>
+          <li style="--v:6;--i:10"><span>Жешув</span><span class="waits__bar"></span><b>6&nbsp;мес.</b></li>
+          <li style="--v:6;--i:11"><span>Белосток</span><span class="waits__bar"></span><b>6&nbsp;мес.</b></li>
+          <li style="--v:6;--i:12"><span>Ольштын</span><span class="waits__bar"></span><b>6&nbsp;мес.</b></li>
+          <li style="--v:5;--i:13"><span>Краков</span><span class="waits__bar"></span><b>5&nbsp;мес.</b></li>
+          <li style="--v:5;--i:14"><span>Люблин</span><span class="waits__bar"></span><b>5&nbsp;мес.</b></li>
+          <li style="--v:4;--i:15"><span>Кельце</span><span class="waits__bar"></span><b>4&nbsp;мес.</b></li>
         </ul>
         <p class="waits__note">Данные 2026 года по делам, которые ведём мы. Свой срок можно оценить в <a href="analyzer.html" data-cta="waits_analyzer">анализаторе Residia</a>, точный прогноз - на диагностике.</p>
       </figure>
@@ -376,10 +345,10 @@
   <section class="packages section--dark" id="packages" aria-labelledby="packages-title" data-view-content>
     <div class="packages__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-head section-head--split">
+      <div class="section-head">
         <div>
           <p class="eyebrow eyebrow--light" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Карта побыту по работе</p>
-          <h2 class="h2" id="packages-title" data-reveal>Два пакета. Цена известна заранее.</h2>
+          <h2 class="h2" id="packages-title" data-reveal>Два пакета</h2>
         </div>
         <p class="lead lead--muted" data-reveal>Только подача - или сопровождение до получения карты. Расширить пакет можно и после подачи.</p>
       </div>
@@ -418,59 +387,29 @@
     </div>
   </section>
 
-  <section class="services section--sand" id="services" aria-labelledby="services-title">
-    <div class="container">
-      <div class="section-head section-head--split">
-        <div>
-          <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Также помогаем</p>
-          <h2 class="h2" id="services-title" data-reveal>Не только карта побыту</h2>
-        </div>
-        <p class="lead" data-reveal>Стоимость этих услуг называем после бесплатной диагностики - ситуации слишком разные. Blue Card, учёба и смена основания - тоже к нам.</p>
-      </div>
-      <div class="bento">
-        <article class="svc svc--hero" data-reveal>
-          <svg class="svc__mark" aria-hidden="true"><use href="#i-mark"/></svg>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-id"/></svg></span>
-          <h3 class="svc__title">Карта CUKR</h3>
-          <p class="svc__text">Для граждан Украины со статусом UKR - карта побыту на 3 года. Подаётся лично через Profil Zaufany: подготовим всё и проведём по шагам.</p>
-          <a class="svc__link" href="#form" data-situation="cukr"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Карта CUKR</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-family"/></svg></span>
-          <h3 class="svc__title">Воссоединение семьи</h3>
-          <p class="svc__text">Подадим супруга и детей вместе с вашим делом - если вы уже 2 года в Польше по картам побыту.</p>
-          <a class="svc__link" href="#form" data-situation="family"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Воссоединение семьи</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-landmark"/></svg></span>
-          <h3 class="svc__title">Сталый побыт и резидент ЕС</h3>
-          <p class="svc__text">Проверим стаж, язык B1 и доходы ещё до подачи.</p>
-          <a class="svc__link" href="#form" data-situation="other" data-service="Сталый побыт / резидент ЕС"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Сталый побыт и резидент ЕС</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-car"/></svg></span>
-          <h3 class="svc__title">Обмен водительских прав</h3>
-          <p class="svc__text">Замена иностранного удостоверения на польское.</p>
-          <a class="svc__link" href="#form" data-situation="other" data-service="Замена прав"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Обмен водительских прав</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-building"/></svg></span>
-          <h3 class="svc__title">Регистрация spółki</h3>
-          <p class="svc__text">Поможем открыть компанию в Польше.</p>
-          <a class="svc__link" href="#form" data-situation="other" data-service="Регистрация spółki"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Регистрация spółki</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"/></svg></span>
-          <h3 class="svc__title">Zezwolenie na pracę</h3>
-          <p class="svc__text">Разрешение на работу для сотрудников-иностранцев - для работодателей.</p>
-          <a class="svc__link" href="#form" data-situation="other" data-service="Zezwolenie na pracę"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Zezwolenie na pracę</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="svc" data-reveal>
-          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
-          <h3 class="svc__title">Ускорение дела</h3>
-          <p class="svc__text">Официальное ponaglenie, если ужонд затягивает сроки.</p>
-          <a class="svc__link" href="#form" data-situation="waiting"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Ускорение дела</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </article>
+  <section class="expert section--sand" id="expert" aria-labelledby="expert-title">
+    <div class="container expert__grid">
+      <figure class="expert__photo" data-reveal>
+        <picture>
+          <source type="image/webp" srcset="img/vadim-rogozhnikov.webp">
+          <img class="expert__img" src="img/vadim-rogozhnikov.jpg" alt="Вадим Рогожников, основатель Residia" width="800" height="1000" loading="lazy" decoding="async" fetchpriority="low">
+        </picture>
+        <figcaption class="expert__caption">
+          <strong>Вадим Рогожников</strong>
+          <span>Основатель Residia</span>
+          <a href="https://www.instagram.com/residia.consulting/" target="_blank" rel="noopener">Разборы кейсов в Instagram <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
+        </figcaption>
+      </figure>
+      <div class="expert__text">
+        <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Кто ведёт ваше дело</p>
+        <h2 class="h2" id="expert-title" data-reveal>400+ дел в легализации</h2>
+        <p class="lead" data-reveal>До оплаты скажем, есть ли у вас шансы. После - ведём дело так, что вы видите каждый шаг.</p>
+        <p class="lead" data-reveal>Мы не обещаем «гарантированную карту»: решение принимает воевода. Мы отвечаем за то, что зависит от нас - документы без ошибок, подачу в срок и ответ на каждый запрос ужонда.</p>
+        <ul class="stats" role="list" data-reveal>
+          <li><strong data-count="16">16</strong><span>воеводств - работаем по всей Польше</span></li>
+          <li><strong>0&nbsp;zł</strong><span>стоит диагностика шансов</span></li>
+        </ul>
+        <p class="expert__team" data-reveal><span class="avatars" aria-hidden="true"><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span><span><svg class="icon"><use href="#i-user"/></svg></span></span>Персональный менеджер на каждое дело</p>
       </div>
     </div>
   </section>
@@ -484,7 +423,7 @@
         </div>
         <p class="lead" data-reveal>Отзывы из Google Maps - так, как их написали клиенты.</p>
       </div>
-      <div class="rv" data-reviews data-rv-speed="38" data-rv-step="5500" data-rv-hold="9000" data-reveal>
+      <div class="rv" data-reviews data-rv-auto="off" data-rv-speed="38" data-rv-step="5500" data-rv-hold="9000" data-reveal>
         <div class="rv__bar">
           <div class="rv__nav">
             <button class="rv__btn rv__btn--prev" type="button" data-rv-prev aria-label="Предыдущий отзыв"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
@@ -552,7 +491,7 @@
             </li>
           </ul>
         </div>
-        <p class="rv__note">Показываем 7 отзывов из профиля Residia в Google Maps: выбрали их сами, тексты не меняли. Все отзывы - по кнопке ниже. Подлинность отзывов мы отдельно не проверяем: их публикуют пользователи Google.</p>
+        <p class="rv__note">Подборка отзывов из Google Maps.</p>
       </div>
       <div class="reviews__cta" data-reveal>
         <div class="reviews__cta-text">
@@ -574,7 +513,7 @@
       <div class="quiz-section__intro">
         <p class="eyebrow eyebrow--light" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>Бесплатная диагностика</p>
         <h2 class="h2" id="form-title" data-reveal>Оставьте заявку, а мы разберём вашу ситуацию</h2>
-        <p class="lead lead--muted" data-reveal>Мы свяжемся, разберём ваш случай и честно скажем, какие есть варианты. Без обязательств.</p>
+        <p class="lead lead--muted" data-reveal>Мы свяжемся, разберём ваш случай и скажем, какие есть варианты.</p>
       </div>
 
       <form class="quiz lead-form" id="quiz" method="post" novalidate data-lead-form aria-labelledby="form-title">
@@ -608,22 +547,20 @@
           </fieldset>
           <fieldset class="messengers">
             <legend class="field__label">Где удобнее общаться?</legend>
-            <div class="messengers__grid">
-              <label class="option option--compact"><input type="radio" name="messenger" value="WhatsApp" checked><span class="option__box"></span><span class="option__text">WhatsApp</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Telegram"><span class="option__box"></span><span class="option__text">Telegram</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Viber"><span class="option__box"></span><span class="option__text">Viber</span></label>
-              <label class="option option--compact"><input type="radio" name="messenger" value="Звонок"><span class="option__box"></span><span class="option__text">Звонок</span></label>
+            <div class="chips__row">
+              <label class="option option--chip"><input type="radio" name="messenger" value="WhatsApp" checked><span class="option__text">WhatsApp</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Telegram"><span class="option__text">Telegram</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Viber"><span class="option__text">Viber</span></label>
+              <label class="option option--chip"><input type="radio" name="messenger" value="Звонок"><span class="option__text">Звонок</span></label>
             </div>
           </fieldset>
           <label class="field">
             <span class="field__label">Коротко о ситуации <span class="field__opt">- необязательно</span></span>
-            <textarea class="field__control field__control--area" name="comment" rows="3" maxlength="600" placeholder="Например: работаю по umowa o pracę, виза до марта"></textarea>
+            <textarea class="field__control field__control--area" name="comment" rows="2" maxlength="600" placeholder="Например: работаю по umowa o pracę, виза до марта"></textarea>
           </label>
-          <label class="consent"><input type="checkbox" name="consent"><span>Согласен(на) на обработку данных для связи со мной. <a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a></span></label>
-          <p class="quiz__error-msg" data-error="consent" hidden>Нужно согласие, чтобы мы могли с вами связаться</p>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn--primary btn--block quiz__next" type="submit" data-form-submit>Отправить заявку <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <p class="quiz__legal">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>. Хотите сначала оценить шансы сами? Попробуйте <a href="analyzer.html" data-cta="form_analyzer">анализатор шансов</a>.</p>
+          <p class="quiz__legal">Данные нужны только для связи по заявке - подробнее в <a href="privacy.html" target="_blank" rel="noopener">политике конфиденциальности</a>. Хотите сначала оценить шансы сами? Попробуйте <a href="analyzer.html" data-cta="form_analyzer">анализатор шансов</a>.</p>
         </div>
 
         <div class="quiz__result" data-quiz-done hidden tabindex="-1">
@@ -648,9 +585,8 @@
 
       <div class="quiz-section__aside">
         <ul class="checks" role="list" data-reveal>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Отвечаем быстро - лично, без ботов</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Скажем честно, если шансов нет</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Данные - только для связи с вами</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ответим в течение 10-15 минут в рабочее время</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Если шансов нет - скажем сразу</li>
         </ul>
         <div class="direct" data-reveal>
           <p class="direct__label">Или напишите сразу</p>
@@ -665,12 +601,76 @@
     </div>
   </section>
 
+  <section class="services section--paper" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <h2 class="h2" id="services-title" data-reveal>Другие услуги</h2>
+        </div>
+        <p class="lead" data-reveal>Стоимость называем после бесплатной диагностики - ситуации слишком разные.</p>
+      </div>
+      <div class="bento">
+        <article class="svc svc--hero" data-reveal>
+          <svg class="svc__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-id"/></svg></span>
+          <h3 class="svc__title">Карта CUKR</h3>
+          <p class="svc__text">Для граждан Украины со статусом UKR - карта побыту на 3 года. Подаётся лично через Profil Zaufany: подготовим всё и проведём по шагам.</p>
+          <a class="svc__link" href="#form" data-situation="cukr"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Карта CUKR</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-family"/></svg></span>
+          <h3 class="svc__title">Воссоединение семьи</h3>
+          <p class="svc__text">Подадим супруга и детей вместе с вашим делом - если вы уже 2 года в Польше по картам побыту.</p>
+          <a class="svc__link" href="#form" data-situation="family"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Воссоединение семьи</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-landmark"/></svg></span>
+          <h3 class="svc__title">Сталый побыт и резидент ЕС</h3>
+          <p class="svc__text">Проверим стаж, язык B1 и доходы ещё до подачи.</p>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Сталый побыт / резидент ЕС"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Сталый побыт и резидент ЕС</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-car"/></svg></span>
+          <h3 class="svc__title">Обмен водительских прав</h3>
+          <p class="svc__text">Замена иностранного удостоверения на польское.</p>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Замена прав"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Обмен водительских прав</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-building"/></svg></span>
+          <h3 class="svc__title">Регистрация spółki</h3>
+          <p class="svc__text">Поможем открыть компанию в Польше.</p>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Регистрация spółki"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Регистрация spółki</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"/></svg></span>
+          <h3 class="svc__title">Zezwolenie na pracę</h3>
+          <p class="svc__text">Разрешение на работу для сотрудников-иностранцев - для работодателей.</p>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Zezwolenie na pracę"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Zezwolenie na pracę</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
+          <h3 class="svc__title">Ускорение дела</h3>
+          <p class="svc__text">Официальное ponaglenie, если ужонд затягивает сроки.</p>
+          <a class="svc__link" href="#form" data-situation="waiting"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Ускорение дела</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="svc svc--wide" data-reveal>
+          <span class="svc__icon" aria-hidden="true"><svg class="icon"><use href="#i-help"/></svg></span>
+          <div class="svc__body">
+            <h3 class="svc__title">Другая ситуация</h3>
+            <p class="svc__text">Blue Card, учёба, смена основания и другие случаи - разберём на бесплатной диагностике.</p>
+          </div>
+          <a class="svc__link" href="#form" data-situation="other" data-service="Другая ситуация"><span class="svc__link-text">Узнать стоимость<span class="sr-only">: Другая ситуация</span></span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="faq section--sand" id="faq" aria-labelledby="faq-title">
     <div class="container faq__grid">
       <div class="faq__aside">
         <p class="eyebrow" data-reveal><svg class="icon icon--rhombus" aria-hidden="true"><use href="#i-rhombus"/></svg>FAQ</p>
         <h2 class="h2" id="faq-title" data-reveal>Частые вопросы</h2>
-        <p class="lead" data-reveal>Не нашли ответ? Напишите - ответит живой человек, а не бот.</p>
+        <p class="lead" data-reveal>Не нашли ответ? Напишите - ответим в ближайшее время.</p>
         <button class="btn btn--dark" type="button" data-open-chat data-reveal><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Написать нам</button>
       </div>
       <div class="faq__list">
@@ -704,7 +704,7 @@
         </details>
         <details class="qa" name="faq">
           <summary>Что, если придёт отказ?<span class="qa__icon" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
-          <div class="qa__body"><p>Отказ - не конец: можно подать odwołanie или исправить документы. Разберём решение и предложим план.</p></div>
+          <div class="qa__body"><p>Отказ - не конец: можно подать <span class="term" data-term><button class="term__btn" type="button" aria-describedby="tip-odwolanie">odwołanie</button><span class="term__tip" role="tooltip" id="tip-odwolanie">Обжалование отказа во второй инстанции</span></span> или исправить документы. Разберём решение и предложим план.</p></div>
         </details>
         <a class="faq__more" href="faq.html">Все вопросы и ответы <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
@@ -797,7 +797,7 @@
 </footer>
 
 <button class="chat-fab" type="button" data-open-chat aria-haspopup="dialog">
-  <span class="chat-fab__avatar" aria-hidden="true"><img src="img/vadim-avatar.jpg" alt="" width="46" height="46" loading="lazy" decoding="async"><span class="chat-fab__dot"></span></span>
+  <span class="chat-fab__avatar" aria-hidden="true"><img src="img/vadim-avatar.jpg" alt="" width="46" height="46" loading="lazy" decoding="async"></span>
   <span class="chat-fab__text"><strong>Написать Вадиму</strong><span>WhatsApp · Telegram · звонок</span></span>
 </button>
 
@@ -810,7 +810,7 @@
   <div class="sheet__inner">
     <span class="sheet__grabber" aria-hidden="true"></span>
     <div class="sheet__head">
-      <span class="sheet__avatar" aria-hidden="true"><img src="img/vadim-avatar.jpg" alt="" width="56" height="56" loading="lazy" decoding="async"><span class="chat-fab__dot"></span></span>
+      <span class="sheet__avatar" aria-hidden="true"><img src="img/vadim-avatar.jpg" alt="" width="56" height="56" loading="lazy" decoding="async"></span>
       <span class="sheet__who"><strong>Вадим Рогожников</strong><span>Основатель Residia. Отвечаю лично и как можно быстрее</span></span>
       <button class="sheet__close" type="button" aria-label="Закрыть" data-close-chat><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
@@ -842,10 +842,10 @@
 </dialog>
 
 <div class="cookie" role="region" aria-label="Настройки cookie" data-cookie hidden>
-  <p>Мы используем cookie и пиксель Meta, чтобы понимать, откуда приходят клиенты, и не показывать лишнюю рекламу. <a href="privacy.html">Подробнее</a></p>
+  <p>Используем cookie и пиксель Meta, чтобы понимать, какая реклама приводит клиентов. <a href="privacy.html">Подробнее</a></p>
   <div class="cookie__actions">
     <button class="btn btn--primary btn--sm" type="button" data-cookie-accept>Принять</button>
-    <button class="btn btn--outline btn--sm" type="button" data-cookie-decline>Только необходимые</button>
+    <button class="btn btn--outline btn--sm" type="button" data-cookie-decline>Отказаться</button>
   </div>
 </div>
 

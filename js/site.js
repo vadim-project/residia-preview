@@ -3,7 +3,8 @@
    - UTM / fbclid -> sessionStorage -> заявка -> Make -> Notion
    - Meta Pixel грузится ТОЛЬКО после согласия на cookie
    - Форма заявки, окно «Написать», анимации по скроллу
-   - Отзывы: карточки в движении (лента едет сама, пауза, стрелки, свайп)
+   - Отзывы: лента карточек (стрелки, свайп; сама не едет - решение 11.10.2026)
+   - Польские термины: подсказка по наведению (ПК) и по нажатию (телефон)
    - window.Residia - общие функции для js/docs.js (раздел «Документы»)
    ========================================================================== */
 (function () {
@@ -140,19 +141,13 @@
     $$('[data-cookie-settings]').forEach(function (b) { b.addEventListener('click', show); });
   }
 
-  /* ---------- Шапка, прогресс чтения, меню ---------- */
+  /* ---------- Шапка, меню ---------- */
   function initHeader() {
     var header = $('[data-header]');
-    var bar = $('[data-read-progress]');
     if (!header) return;
     onScroll(function () {
       var y = window.scrollY || window.pageYOffset;
       header.classList.toggle('is-scrolled', y > 8);
-      if (bar) {
-        var max = root.scrollHeight - window.innerHeight;
-        var p = max > 0 ? Math.min(1, Math.max(0.03, y / max)) : 0.03;
-        bar.style.setProperty('--read', p.toFixed(4));
-      }
     });
   }
 
@@ -257,6 +252,19 @@
     var track = $('.steps__track', wrap);
     var steps = $$('.step', wrap);
     var active = !('IntersectionObserver' in window);
+    // Линия идёт от центра первого номера до центра последнего: дальше пункта нет - нет и линии.
+    // offsetTop не учитывает сдвиг шагов при появлении, поэтому считаем по нему.
+    function fitTrack() {
+      var last = steps[steps.length - 1];
+      var num = last && last.firstElementChild;
+      if (!num) return;
+      var bottom = wrap.offsetHeight - (last.offsetTop + num.offsetTop + num.offsetHeight / 2);
+      if (bottom > 0) track.style.bottom = Math.round(bottom) + 'px';
+    }
+    fitTrack();
+    var fitTimer = 0;
+    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(function () { fitTrack(); update(); }, 150); }, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitTrack(); update(); });
     function update() {
       if (!active) return;
       var r = track.getBoundingClientRect();
@@ -367,8 +375,16 @@
     $$('[data-open-chat]').forEach(function (b) { b.addEventListener('click', open); });
   }
 
-  /* ---------- Плавающие кнопки: прячем, когда форма на экране ---------- */
+  /* ---------- Плавающие кнопки: появляются после первого экрана, прячутся, когда форма на экране ---------- */
   function initFloating() {
+    // «Написать Вадиму» и нижняя плашка не показываются, пока первый экран занимает верхнюю половину окна
+    var hero = $('#top');
+    if (!hero || !('IntersectionObserver' in window)) root.classList.add('past-hero');
+    else {
+      new IntersectionObserver(function (entries) {
+        root.classList.toggle('past-hero', !entries[entries.length - 1].isIntersecting);
+      }, { rootMargin: '0px 0px -55% 0px' }).observe(hero);
+    }
     var formSection = $('[data-form-section]');
     if (!formSection || !('IntersectionObserver' in window)) return;
     var footBottom = $('.site-footer__bottom');
@@ -447,8 +463,7 @@
       if (m) m.hidden = !on;
       var el = field(key);
       if (!el || isGroup(el) || !el.setAttribute) return;
-      if (el.type === 'checkbox') el.closest('.consent').classList.toggle('is-invalid', on);
-      else el.setAttribute('aria-invalid', on ? 'true' : 'false');
+      el.setAttribute('aria-invalid', on ? 'true' : 'false');
     }
     function syncChecked(name) {
       $$('input[name="' + name + '"]', form).forEach(function (r) {
@@ -465,14 +480,12 @@
       var nameOk = val('name').length >= 2;
       var phoneOk = !!normalizePhone(val('phone'));
       var serviceOk = !!val('service');
-      var consentOk = !!val('consent');
       setErr('name', !nameOk);
       setErr('phone', !phoneOk);
       setErr('service', !serviceOk);
-      setErr('consent', !consentOk);
-      var firstBad = !nameOk ? field('name') : !phoneOk ? field('phone') : !serviceOk ? $('input[name="service"]', form) : !consentOk ? field('consent') : null;
+      var firstBad = !nameOk ? field('name') : !phoneOk ? field('phone') : !serviceOk ? $('input[name="service"]', form) : null;
       if (firstBad) firstBad.focus();
-      return nameOk && phoneOk && serviceOk && consentOk;
+      return nameOk && phoneOk && serviceOk;
     }
     function buildPayload() {
       var key = val('service');
@@ -588,7 +601,6 @@
         setErr(t.name, false);
         if (t.name === 'service') markStarted('service');
       }
-      if (t.name === 'consent' && t.checked) setErr('consent', false);
     });
     form.addEventListener('input', function (e) {
       var t = e.target;
@@ -649,7 +661,9 @@
     });
   }
 
-  /* ---------- Отзывы: карточки в движении ---------- */
+  /* ---------- Отзывы: лента карточек ---------- */
+  // С 11.10.2026 на сайте data-rv-auto="off": лента сама не едет, листается стрелками, свайпом и клавиатурой.
+  // Код движения ниже оставлен: его включает data-rv-auto="on" в build_reviews.py (и он проверяется автотестами).
   // Широкий экран - лента плавно едет (Web Animations, только transform): её можно тянуть мышью,
   // крутить колесом вбок, двигать стрелками; наведение и фокус ставят на паузу.
   // Телефон - обычная прокрутка свайпом, лента сама переходит к следующей карточке.
@@ -772,7 +786,7 @@
     }
 
     function setMode() {
-      finite = reduceMotion.matches;
+      finite = reduceMotion.matches || box.getAttribute('data-rv-auto') === 'off';
       var want = (!finite && canAnimate && wideMq.matches) ? 'drift' : 'scroll';
       box.classList.toggle('rv--finite', finite);
       if (anim) { anim.cancel(); anim = null; }
@@ -917,6 +931,62 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { checkClamp(); if (mode === 'drift' && Math.abs(setW() - driftW) > 1) startDrift(); });
   }
 
+  /* ---------- Польские термины: подсказка по наведению (ПК) и по нажатию (телефон) ---------- */
+  function initTerms() {
+    var terms = $$('[data-term]');
+    if (!terms.length) return;
+    var open = null, openY = 0;
+    var header = $('[data-header]');
+    function place(t) {
+      var tip = $('.term__tip', t);
+      if (!tip) return;
+      t.classList.remove('term--below');
+      tip.style.setProperty('--dx', '0px');
+      var r = tip.getBoundingClientRect();
+      var vw = document.documentElement.clientWidth, pad = 12, dx = 0;
+      if (r.left < pad) dx = pad - r.left;
+      else if (r.right > vw - pad) dx = vw - pad - r.right;
+      tip.style.setProperty('--dx', Math.round(dx) + 'px');
+      var top = header ? header.getBoundingClientRect().bottom : 0;
+      if (r.top < top + 8) t.classList.add('term--below');
+    }
+    function close() {
+      if (!open) return;
+      open.classList.remove('is-open');
+      open = null;
+    }
+    terms.forEach(function (t) {
+      var btn = $('.term__btn', t);
+      if (!btn) return;
+      t.addEventListener('pointerenter', function () { t.classList.remove('is-dismissed'); place(t); });
+      t.addEventListener('pointerleave', function () { t.classList.remove('is-dismissed'); });
+      btn.addEventListener('focus', function () { place(t); });
+      btn.addEventListener('blur', function () { t.classList.remove('is-dismissed'); });
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var was = open === t;
+        close();
+        if (was) return;
+        t.classList.remove('is-dismissed');
+        t.classList.add('is-open');
+        place(t);
+        open = t;
+        openY = window.scrollY || window.pageYOffset;
+      });
+    });
+    document.addEventListener('click', function (e) { if (open && !open.contains(e.target)) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      close();
+      var a = document.activeElement;
+      if (a && a.classList && a.classList.contains('term__btn')) a.parentNode.classList.add('is-dismissed');
+      $$('.term:hover').forEach(function (t) { t.classList.add('is-dismissed'); });
+    });
+    window.addEventListener('scroll', function () {
+      if (open && Math.abs((window.scrollY || window.pageYOffset) - openY) > 60) close();
+    }, { passive: true });
+  }
+
   /* ---------- Запуск ---------- */
   safe(initReveal, 'reveal');
   safe(initConsent, 'consent');
@@ -933,6 +1003,7 @@
   safe(initLeadForm, 'form');
   safe(initFormLinks, 'formlinks');
   safe(initReviews, 'reviews');
+  safe(initTerms, 'terms');
   safe(function () { $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); }); }, 'year');
   runScroll();
 

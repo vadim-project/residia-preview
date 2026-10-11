@@ -1,7 +1,7 @@
 /* ==========================================================================
    Residia - согласие на cookie + Meta Pixel для внутренних страниц
    (analyzer.html, faq.html, privacy.html). Тот же ключ, что и на главной:
-   если человек уже нажал «Принять» или «Только необходимые» на главной,
+   если человек уже нажал «Принять» или «Отказаться» на главной,
    баннер здесь не показывается повторно.
    ========================================================================== */
 (function () {
@@ -56,10 +56,10 @@
     box.setAttribute('aria-label', 'Настройки cookie');
     box.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;max-width:460px;padding:16px;border-radius:20px;background:#14181A;color:#D6D1C8;box-shadow:inset 0 0 0 1px rgba(244,239,230,.12),0 20px 50px rgba(0,0,0,.4);font:14px/1.5 Onest,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif';
     box.innerHTML =
-      '<p style="margin:0 0 12px">Мы используем cookie и пиксель Meta, чтобы понимать, откуда приходят клиенты, и не показывать лишнюю рекламу. <a href="privacy.html" style="color:#8CEFC4">Подробнее</a></p>' +
+      '<p style="margin:0 0 12px">Используем cookie и пиксель Meta, чтобы понимать, какая реклама приводит клиентов. <a href="privacy.html" style="color:#8CEFC4">Подробнее</a></p>' +
       '<div style="display:flex;gap:8px">' +
       '<button type="button" data-a="granted" style="flex:1;min-height:46px;border:0;border-radius:13px;background:#2FA876;color:#0E1112;font:600 15px/1.2 Onest,system-ui,-apple-system,sans-serif;cursor:pointer">Принять</button>' +
-      '<button type="button" data-a="denied" style="flex:1;min-height:46px;border:0;border-radius:13px;background:transparent;color:#F4EFE6;box-shadow:inset 0 0 0 1px rgba(244,239,230,.24);font:600 15px/1.2 Onest,system-ui,-apple-system,sans-serif;cursor:pointer">Только необходимые</button>' +
+      '<button type="button" data-a="denied" style="flex:1;min-height:46px;border:0;border-radius:13px;background:transparent;color:#F4EFE6;box-shadow:inset 0 0 0 1px rgba(244,239,230,.24);font:600 15px/1.2 Onest,system-ui,-apple-system,sans-serif;cursor:pointer">Отказаться</button>' +
       '</div>';
     box.addEventListener('click', function (e) {
       var btn = e.target.closest('button[data-a]');
